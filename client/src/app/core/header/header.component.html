@@ -1,0 +1,31 @@
+<nav class="container navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" routerLink="/">mediumLike</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="!(isLoggedIn | async)">
+        <a class="nav-link" routerLink="/login">Sign In</a>
+      </li>
+      <li class="nav-item" *ngIf="currentUser | async">
+        <div class="dropdown">
+          <a *ngIf="currentUser | async;else loading" class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">{{(currentUser | async)?.name}}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" routerLink="/new">New post</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/profile">Your profile</a>
+            <a class="dropdown-item" (click)="onLogout()">Logout</a>
+          </div>
+        </div>
+        <ng-template #loading>
+          <app-loading></app-loading>
+        </ng-template>
+      </li>
+    </ul>
+  </div>
+</nav>
