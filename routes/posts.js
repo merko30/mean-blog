@@ -117,7 +117,7 @@ router.post(
       if (err) {
         res.status(400).json({ success: false, message: "Error" + err });
       } else {
-        res.json(c);
+        res.json(comment);
       }
     });
   }

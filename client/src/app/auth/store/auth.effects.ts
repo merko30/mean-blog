@@ -112,7 +112,7 @@ export class AuthEffects {
     tap((action: authActions.Logout) => {
       this.authService.logout();
     }),
-    map(() => new routeActions.Go({ path: ["/login"] }))
+    tap(() => new routeActions.Go({ path: ["/login"] }))
   );
 
   @Effect()
