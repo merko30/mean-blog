@@ -71,7 +71,7 @@ export const getCurrentUserPosts = createSelector(
   getAllPosts,
   getCurrentUser,
   (posts, user) => {
-    return posts && posts.filter(p => p.author._id === user._id);
+    return posts && user && posts.filter(p => p.author._id === user._id);
   }
 );
 

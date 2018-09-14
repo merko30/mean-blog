@@ -64,7 +64,7 @@ router.post("/authenticate", (req, res) => {
 // USER PROFILE
 
 router.get("/users/:id", passport.authenticate("jwt"), (req, res) => {
-  User.findOne({ _id: req.params.id})
+  User.findOne({ _id: req.params.id })
     .select("-password")
     .exec((err, user) => {
       if (err) throw err;

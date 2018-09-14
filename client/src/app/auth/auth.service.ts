@@ -3,9 +3,12 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 import { tokenNotExpired } from "angular2-jwt";
-import * as jwt_decode from "jwt-decode";
 
 import { environment } from "./../../environments/environment";
+
+import { JwtHelper } from "angular2-jwt";
+
+const helper = new JwtHelper();
 
 @Injectable()
 export class AuthService {
@@ -31,15 +34,14 @@ export class AuthService {
     localStorage.clear();
   }
 
-  getUser(id): Observable<any> {
-    return this.http.get(environment.apiUrl + "/users/" + id);
-  }
-
   getCurrentUserId() {
     if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
-      const decoded = jwt_decode(token);
-      return decoded.id;
+      const decodedToken = helper.decodeToken(localStorage.getItem("token"));
+      return decodedToken.id;
     }
+  }
+
+  getUser(id): Observable<any> {
+    return this.http.get(environment.apiUrl + "/users/" + id);
   }
 }

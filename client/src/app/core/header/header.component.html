@@ -10,7 +10,7 @@
       <li class="nav-item" *ngIf="!(isLoggedIn | async)">
         <a class="nav-link" routerLink="/login">Sign In</a>
       </li>
-      <li class="nav-item" *ngIf="currentUser | async">
+      <li class="nav-item" *ngIf="(isLoggedIn | async) && (currentUser | async)">
         <div class="dropdown">
           <a *ngIf="currentUser | async;else loading" class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">{{(currentUser | async)?.name}}

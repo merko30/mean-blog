@@ -19,6 +19,7 @@ import { AuthService } from "./../auth.service";
 import * as authActions from "../store/auth.actions";
 import * as routeActions from "../../store/routing.actions";
 import * as messageActions from "../../messages/messages.actions";
+
 import { User } from "../../models/user.model";
 
 @Injectable()
@@ -77,7 +78,9 @@ export class AuthEffects {
     .pipe(
       tap((action: authActions.LoginSuccess) => {
         localStorage.setItem("token", action.payload.token);
-      }),
+      })
+    )
+    .pipe(
       debounceTime(3000),
       mergeMap(login => [
         new routeActions.Go({ path: ["/"] }),
@@ -109,10 +112,10 @@ export class AuthEffects {
 
   @Effect()
   logout$: Observable<Action> = this.actions$.ofType(authActions.LOGOUT).pipe(
-    tap((action: authActions.Logout) => {
+    map((action: authActions.Logout) => {
       this.authService.logout();
     }),
-    tap(() => new routeActions.Go({ path: ["/login"] }))
+    map(() => new routeActions.Go({ path: ["/login"] }))
   );
 
   @Effect()
