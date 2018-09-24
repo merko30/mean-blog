@@ -1,46 +1,31 @@
-<div class="container">
-    <div class="row">
+<div class="row">
 
-        <!-- Post Content Column -->
-        <div class="container">
+    <div class="container ml-auto">
 
-            <!-- Title -->
-            <h1 class="mt-4">{{(post$ | async)?.title}}</h1>
-
-            <!-- Author -->
-            <p class="lead">
-                by {{(post$ | async)?.author.username}}
+        <h1 class="mt-4">{{(post$ | async)?.title}}</h1>
+        <div class="d-flex align-items-center my-2"><img class="mr-3 rounded-circle avatar" src="{{(post$ | async)?.author.avatar}}"
+                alt="">
+            <p>
+                {{(post$ | async)?.author.username}}
             </p>
-
-            <hr>
-
-            <!-- Date/Time -->
-            <p>Posted on {{((post$ | async)?.createdAt).split('T')[0]}}</p>
-
-            <hr>
-
-            <!-- Preview Image -->
-            <img class="img-fluid rounded" src="{{(post$ | async)?.image}}" alt="image">
-
-            <hr>
-
-            <!-- Post Content -->
-            <p class="lead mt-3">{{(post$ | async)?.body}}</p>
-            <button type="button" class="btn btn-link my-2 pl-0" [routerLink]="['/posts', (post$ | async)?._id, 'edit']" *ngIf="(currentUser | async)?.username == (post$ | async)?.author?.username">Edit post</button>
-            <hr>
-
-            <div class="media mt-4" *ngFor="let c of comments$ | async">
-                <img class="d-flex mr-3 rounded-circle" id="comment-avatar" src="{{c.author.avatar}}" alt="">
-                <div class="media-body">
-                    <h5 class="mt-0">{{c.author.username}}</h5>
-                    {{c.comment}}
-                </div>
-            </div>
-
-            <form (ngSubmit)="onComment(f)" #f="ngForm">
-                <textarea rows="3" ngModel required minlength="12" type="text" class="form-control my-5" name="comment"></textarea>
-                <button type="submit" class="btn btn-outline-primary btn-sm mt-2 mb-4" [disabled]="!f.valid">Add comment</button>
-            </form>
         </div>
+
+        <img class="img-fluid rounded" src="{{(post$ | async)?.image}}" alt="image">
+
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead mt-3">{{(post$ | async)?.body}}</p>
+        <button type="button" class="btn btn-link my-2 pl-0" [routerLink]="['/posts', (post$ | async)?._id, 'edit']"
+            *ngIf="(currentUser | async)?.username == (post$ | async)?.author?.username">Edit post</button>
+        <hr>
+
+        <app-comment *ngFor='let comment of (comments$ | async)' [comment]='comment'></app-comment>
+
+        <form (ngSubmit)="onComment(f)" #f="ngForm">
+            <textarea rows="3" ngModel required minlength="12" type="text" class="form-control my-5" name="comment"></textarea>
+            <button type="submit" class="btn btn-outline-primary btn-sm mt-2 mb-4" [disabled]="!f.valid && (isLoggedIn | async)">Add
+                comment</button>
+        </form>
     </div>
 </div>

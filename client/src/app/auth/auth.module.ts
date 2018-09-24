@@ -16,6 +16,7 @@ import { SharedModule } from "./../shared/shared.module";
 
 import { authReducer } from "./store/auth.reducer";
 import { AuthEffects } from "./store/auth.effects";
+import { GuestGuard } from "./guest.guard";
 
 @NgModule({
   imports: [
@@ -30,6 +31,6 @@ import { AuthEffects } from "./store/auth.effects";
   ],
   exports: [LoginComponent, RegisterComponent],
   declarations: [LoginComponent, RegisterComponent],
-  providers: [AuthService, AuthGuard]
+  providers: [AuthService, AuthGuard, GuestGuard]
 })
 export class AuthModule {}

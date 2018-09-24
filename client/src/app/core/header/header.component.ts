@@ -4,7 +4,7 @@ import { Observable } from "rxjs/Observable";
 
 import { Store } from "@ngrx/store";
 
-import { LoadingComponent } from "../../shared/loading/loading.component";
+import { take } from "rxjs/operators";
 
 import * as fromStore from "../../store/app.reducer";
 import * as fromActions from "../../auth/store/auth.actions";
@@ -28,8 +28,8 @@ export class HeaderComponent {
     private authService: AuthService
   ) {
     this.isLoggedIn = this.store.select(fromStore.getStatus);
-    this.isLoggedIn.subscribe(loggedIn => {
-      if (loggedIn && localStorage.getItem("token")) {
+    this.isLoggedIn.take(1).subscribe(loggedIn => {
+      if (loggedIn) {
         this.id = this.authService.getCurrentUserId();
         this.store.dispatch(new fromActions.GetUser(this.id));
       }

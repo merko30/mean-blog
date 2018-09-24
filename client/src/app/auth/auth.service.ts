@@ -4,15 +4,21 @@ import { HttpClient } from "@angular/common/http";
 
 import { tokenNotExpired } from "angular2-jwt";
 
+import * as fromStore from "../store/app.reducer";
+
 import { environment } from "./../../environments/environment";
 
 import { JwtHelper } from "angular2-jwt";
+import { Store } from "@ngrx/store";
 
 const helper = new JwtHelper();
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private store: Store<fromStore.AppState>
+  ) {}
 
   RegisterUser(user) {
     return this.http.post(environment.apiUrl + "/register", user);
@@ -22,12 +28,14 @@ export class AuthService {
     return this.http.post(environment.apiUrl + "/authenticate", user);
   }
 
-  isAuthenticated(): boolean {
-    if (localStorage.getItem("token") && tokenNotExpired("token")) {
-      return true;
-    } else {
-      return false;
-    }
+  isAuthenticated() {
+    this.store.select(fromStore.getStatus).subscribe(loggedIn => {
+      if (loggedIn) {
+        return true;
+      } else {
+        return false;
+      }
+    });
   }
 
   logout() {
@@ -37,7 +45,7 @@ export class AuthService {
   getCurrentUserId() {
     if (localStorage.getItem("token")) {
       const decodedToken = helper.decodeToken(localStorage.getItem("token"));
-      return decodedToken.id;
+      return decodedToken._id;
     }
   }
 

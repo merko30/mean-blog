@@ -1,9 +1,14 @@
+* {
+  font-family: "Calibri", "sans-serif" !important;
+}
+
 p {
   margin: 0;
 }
 
 .container {
-  margin-top: 50px;
+  margin-top: 2em;
+  width: 98vh;
 }
 
 .info {
@@ -27,12 +32,13 @@ p {
   width: 60px;
   height: 60px;
   display: block;
-  border: 2px solid rgb(146, 146, 146);
+  border: 2px solid rgb(133, 61, 61);
   border-radius: 50%;
 }
 
 .content > img {
-  background-size: cover;
+  object-fit: cover;
+  width: 100%;
 }
 
 .content > .cap > .title {
@@ -62,7 +68,9 @@ button {
   padding-left: 2px;
 }
 
-#comment-avatar {
+.avatar {
   width: 60px !important;
   height: 60px !important;
+  padding: 3px;
+  border: 1px solid #ededed;
 }

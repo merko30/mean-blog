@@ -4,6 +4,10 @@ import { Store } from "@ngrx/store";
 
 import { Observable } from "rxjs/Observable";
 
+import { take } from "rxjs/operators";
+
+import { CommentComponent } from "../comments/comment/comment.component";
+
 import { AuthService } from "../../auth/auth.service";
 
 import { User } from "../../models/user.model";
@@ -37,10 +41,13 @@ export class PostDetailComponent implements OnInit {
     this.store.dispatch(new PostActions.LoadPosts());
     this.store.dispatch(new CommentActions.LoadComments());
     this.isLoggedIn = this.store.select(fromStore.getStatus);
-    if (this.isLoggedIn) {
-      this.id = this.authService.getCurrentUserId();
-      this.store.dispatch(new authActions.GetUser(this.id));
-    }
+    this.isLoggedIn.take(1).subscribe(isTrue => {
+      if (isTrue) {
+        this.id = this.authService.getCurrentUserId();
+        this.store.dispatch(new authActions.GetUser(this.id));
+        console.log(this.id);
+      }
+    });
     this.currentUser = this.store.select(fromStore.getCurrentUser);
     this.store.select(fromStore.getParams).subscribe(params => {
       this.postID = params.id;
@@ -54,5 +61,6 @@ export class PostDetailComponent implements OnInit {
 
   onComment(f) {
     this.store.dispatch(new CommentActions.AddComment(this.postID, f.value));
+    f.reset();
   }
 }

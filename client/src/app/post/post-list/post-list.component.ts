@@ -2,6 +2,8 @@ import { Observable } from "rxjs/Observable";
 import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
 
+import { PostItemComponent } from "../post-item/post-item.component";
+
 import { Post } from "../../models/post.model";
 import * as PostActions from "./../store/post.actions";
 import * as fromStore from "../../store/app.reducer";

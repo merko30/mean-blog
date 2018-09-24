@@ -77,7 +77,7 @@ export function authReducer(
       return {
         ...state,
         loading: true,
-        loggedIn: true,
+        loggedIn: false,
         currentUser: null
       };
     }
@@ -87,6 +87,14 @@ export function authReducer(
         loading: false,
         loggedIn: true,
         currentUser: action.user
+      };
+    }
+    case AuthActions.GET_USER_FAILED: {
+      return {
+        ...state,
+        loading: false,
+        loggedIn: true,
+        currentUser: null
       };
     }
     default: {
