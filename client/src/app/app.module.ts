@@ -1,77 +1,34 @@
-import { CommonModule } from "@angular/common";
-import { RouterModule, Routes } from "@angular/router";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 
-import { StoreModule, ActionReducer } from "@ngrx/store";
-import { EffectsModule } from "@ngrx/effects";
-import {
-  StoreRouterConnectingModule,
-  RouterStateSerializer
-} from "@ngrx/router-store";
-import { StoreDevtoolsModule } from "@ngrx/store-devtools";
-
-import { reducers } from "./store/app.reducer";
-import { CustomSerializer } from "./store/routing";
-
-import { AuthEffects } from "./auth/store/auth.effects";
-import { RoutingEffects } from "./store/routing.effects";
-import { PostEffects } from "./post/store/post.effects";
-import { CommentsEffects } from "./post/comments/store/comments.effects";
-
-import { AppComponent } from "./app.component";
-import { HeaderComponent } from "./core/header/header.component";
-import { FooterComponent } from "./core/footer/footer.component";
-import { ProfileComponent } from "./shared/profile/profile.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { SharedModule } from "./shared/shared.module";
-
-import { AuthModule } from "./auth/auth.module";
-import { PostModule } from "./post/post.module";
-
-import { AuthInterceptor } from "./auth/auth.interceptor";
+import { AppComponent } from "./app.component";
+import { PostsModule } from "./posts/posts.module";
+import { NavbarComponent } from "./navbar/navbar.component";
+import { FooterComponent } from "./footer/footer.component";
+import { StoreModule } from "@ngrx/store";
+import { reducers, metaReducers } from "./reducers";
+import { EffectsModule } from "@ngrx/effects";
+import { AppEffects } from "./app.effects";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    ProfileComponent
-  ],
+  declarations: [AppComponent, NavbarComponent, FooterComponent],
   imports: [
-    CommonModule,
     BrowserModule,
-    RouterModule,
-    ReactiveFormsModule,
-    FormsModule,
+    AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([
-      AuthEffects,
-      PostEffects,
-      CommentsEffects,
-      RoutingEffects
-    ]),
-    StoreRouterConnectingModule,
-    StoreDevtoolsModule.instrument({}),
-    SharedModule,
-    PostModule,
-    AuthModule,
-    AppRoutingModule
+    PostsModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    EffectsModule.forRoot([AppEffects])
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
-    {
-      provide: RouterStateSerializer,
-      useClass: CustomSerializer
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

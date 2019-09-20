@@ -1,41 +1,26 @@
-const mongoose = require('mongoose');
-const schema = mongoose.Schema;
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
-const Post = require('./post');
-
-
-const userSchema = new schema({
-    username: { type: String, unique: true, required: true },
-    name: { type: String },
-    email: { type: String, unique: true, required: true },
-    password: { type: String, required: true },
-    avatar: { type: String, required: true }
-})
-
-userSchema.pre('save', function (next) {
-    var user = this
-
-    if (!user.isModified('password')) return next();
-
-    bcrypt.genSalt(10, function (err, salt) {
-        if (err) return next(err);
-
-        bcrypt.hash(user.password, salt, function (err, hash) {
-            if (err) return next(err);
-
-            user.password = hash;
-            next();
-        })
-    })
+const schema = new mongoose.Schema({
+  username: { type: String, unique: true, required: true },
+  name: { type: String },
+  email: { type: String, unique: true, required: true },
+  password: { type: String, required: true },
+  avatar: { type: String, required: true }
 });
 
-userSchema.methods.isValidPassword = function (password) {
-    return bcrypt.compareSync(password, this.password);
-}
+schema.pre("save", async function(next) {
+  var user = this;
+  if (!this.isModified("password")) {
+    return next();
+  }
+  const hashedPassword = await bcrypt.hash(user.password, 10);
+  user.password = hashedPassword;
+  next();
+});
 
+schema.methods.isValidPassword = function(password) {
+  return bcrypt.compareSync(password, this.password);
+};
 
-
-
-const User = module.exports = mongoose.model('User', userSchema, 'users');
+module.exports = mongoose.model("User", schema, "users");

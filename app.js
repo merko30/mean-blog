@@ -1,50 +1,22 @@
+require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const passport = require("passport");
-const cors = require("cors");
-const dotenv = require("dotenv");
 
 const app = express();
 
-dotenv.config();
+const setMiddlewares = require("./config/middlewares");
+const runDatabase = require("./config/database");
+const routes = require("./routes");
+const errorHandler = require("./utils/errorHandler");
 
-// MongoDB
-mongoose
-  .connect(
-    process.env.DB,
-    { useMongoClient: true }
-  )
-  .then(() => {
-    console.log("connected");
-  })
-  .catch(err => console.log(err));
+setMiddlewares(app);
+runDatabase();
 
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use("/api", routes);
 
-// Passport
+app.use(errorHandler);
 
-require("./config/passport")(passport);
-app.use(passport.initialize());
+const PORT = process.env.PORT || 3000;
 
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
-
-//API
-const users = require("./routes/users");
-app.use("/api", users);
-
-const posts = require("./routes/posts");
-app.use("/api", posts);
-
-port = 3000 || process.env.port;
-
-app.listen(port, () => {
-  console.log("Server started on port " + port);
+app.listen(PORT, () => {
+  console.log("Server started on port " + PORT);
 });
