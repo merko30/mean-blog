@@ -1,1 +1,11 @@
-<p>navbar works!</p>
+<div class="navbar">
+  <div class="logo">
+    <h2>logo</h2>
+  </div>
+  <button (click)="toggleMenu()" class="menu-button">menu</button>
+  <div class="nav-list" *ngIf="showMenu">
+    <a routerLink="/" class="nav-link">Home</a>
+    <a routerLink="/register" class="nav-link">Register</a>
+    <a routerLink="/login" class="nav-link">Login</a>
+  </div>
+</div>

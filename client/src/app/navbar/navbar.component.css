@@ -1,0 +1,50 @@
+.navbar {
+  padding: 1em;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-list {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-link {
+  padding: 1em 0;
+  color: #333;
+}
+
+.nav-link:hover {
+  color: #666;
+}
+
+.menu-button {
+  position: absolute;
+  right: 2em;
+  top: 2em;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    padding: 1em 2em;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-list {
+    margin-top: 0;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nav-link {
+    margin: 0 1em;
+  }
+
+  .menu-button {
+    display: none;
+  }
+}

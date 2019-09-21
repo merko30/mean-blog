@@ -1,0 +1,28 @@
+<form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <app-text-input
+    [name]="'avatar'"
+    [label]="'Avatar URL'"
+    [form]="registerForm"
+  ></app-text-input>
+  <app-text-input
+    [name]="'username'"
+    [label]="'Username'"
+    [form]="registerForm"
+  ></app-text-input>
+  <app-text-input
+    [name]="'name'"
+    [label]="'Name'"
+    [form]="registerForm"
+  ></app-text-input>
+  <app-text-input
+    [name]="'email'"
+    [label]="'Email'"
+    [form]="registerForm"
+  ></app-text-input>
+  <app-text-input
+    [name]="'password'"
+    [label]="'Password'"
+    [form]="registerForm"
+  ></app-text-input>
+  <button class="btn btn-submit">Sign up</button>
+</form>

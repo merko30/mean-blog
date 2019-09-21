@@ -1,1 +1,69 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.container {
+  min-height: calc(100vh - 2em);
+  padding: 0 1em;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 2em;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  margin: 1em 0;
+  padding: 1em 2em;
+  border-radius: 10px;
+  background: rgb(41, 169, 243);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  font-size: 0.8em;
+  color: white;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: rgb(35, 145, 209);
+}
+
+.btn-submit {
+  background: rgb(25, 209, 95);
+}
+
+.btn-submit:hover {
+  background: rgb(19, 170, 77);
+}
+
+/* FORM */
+
+.form {
+  margin: 4em auto;
+  width: 90%;
+}
+
+@media screen and (min-width: 500px) {
+  .form {
+    width: 60%;
+  }
+}

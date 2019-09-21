@@ -14,7 +14,9 @@ const getAll = async (req, res, next) => {
 
 const getOne = async (req, res, next) => {
   try {
-    const post = await Post.findById(req.params.id);
+    const post = await Post.findById(req.params.id)
+      .populate("author")
+      .populate("comments");
     res.json({ post });
   } catch (error) {
     next(error);

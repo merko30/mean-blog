@@ -7,9 +7,10 @@ import { EffectsModule } from "@ngrx/effects";
 import { PostsEffects } from "./posts.effects";
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostItemComponent } from './post-item/post-item.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
 
 @NgModule({
-  declarations: [PostListComponent, PostDetailComponent, PostItemComponent],
+  declarations: [PostListComponent, PostDetailComponent, PostItemComponent, CommentListComponent],
   imports: [
     CommonModule,
     PostsRoutingModule,
