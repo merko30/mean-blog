@@ -1,0 +1,5 @@
+.posts {
+  display: grid;
+  grid-template: auto / repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 15px;
+}

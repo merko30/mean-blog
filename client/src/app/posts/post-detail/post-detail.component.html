@@ -1,4 +1,6 @@
-<div *ngIf="post | async as p">
-  <h1>{{ p.title }}</h1>
+<div *ngIf="post | async as p" class="post">
+  <img src="{{ p.image }}" alt="{{ p.title }}" class="image" />
+  <h2 class="title">{{ p.title }}</h2>
+  <p class="text">{{ p.body }}</p>
   <app-comment-list [comments]="p.comments"></app-comment-list>
 </div>

@@ -1,0 +1,26 @@
+.post {
+  padding: 0.5em;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  color: #333;
+}
+
+.image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.text {
+  margin: 0.2em 0 0;
+  height: 1.8em;
+  line-height: 0.9em;
+  font-size: 15px;
+  color: rgb(73, 73, 73);
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* no of lines */
+  text-overflow: ellipsis;
+  overflow: hidden !important;
+}
