@@ -1,5 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { register } from "../auth.actions";
+import { State } from "src/app/reducers";
 
 @Component({
   selector: "app-register",
@@ -7,10 +11,12 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   styleUrls: ["./register.component.css"]
 })
 export class RegisterComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private store: Store<State>) {
     this.createForm();
+    this.error = store.select(state => state.authState.error);
   }
 
+  error: Observable<String>;
   registerForm: FormGroup;
 
   createForm() {
@@ -26,6 +32,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    console.log(this.registerForm.value);
+    this.store.dispatch(register({ user: this.registerForm.value }));
   }
 }

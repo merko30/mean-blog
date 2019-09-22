@@ -1,4 +1,5 @@
 <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <p *ngIf="error | async as err">{{ err }}</p>
   <app-text-input
     [name]="'usernameOrEmail'"
     [label]="'Username or email'"
@@ -9,5 +10,7 @@
     [label]="'Your password'"
     [form]="loginForm"
   ></app-text-input>
-  <button class="btn btn-submit">Sign in</button>
+  <button class="btn btn-submit" [disabled]="!loginForm.valid">
+    Sign in
+  </button>
 </form>

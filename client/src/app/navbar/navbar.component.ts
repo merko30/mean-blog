@@ -1,4 +1,7 @@
 import { Component, OnInit, HostListener } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { State } from "../reducers";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-navbar",
@@ -6,10 +9,12 @@ import { Component, OnInit, HostListener } from "@angular/core";
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit {
-  constructor() {
+  constructor(private store: Store<State>) {
     this.getScreenSize();
+    this.loggedIn = this.store.select(state => state.authState.loggedIn);
   }
 
+  loggedIn: Observable<Boolean>;
   showMenu: Boolean = false;
 
   ngOnInit() {}

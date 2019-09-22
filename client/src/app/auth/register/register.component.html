@@ -1,3 +1,6 @@
+<div *ngIf="error | async as err">
+  <p>{{ err }}</p>
+</div>
 <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <app-text-input
     [name]="'avatar'"
@@ -24,5 +27,7 @@
     [label]="'Password'"
     [form]="registerForm"
   ></app-text-input>
-  <button class="btn btn-submit">Sign up</button>
+  <button class="btn btn-submit" [disabled]="!registerForm.valid">
+    Sign up
+  </button>
 </form>

@@ -25,7 +25,6 @@ const login = async (req, res, next) => {
         { email: req.body.usernameOrEmail }
       ]
     });
-
     if (user) {
       const validPassword = user.isValidPassword(req.body.password);
       if (validPassword) {

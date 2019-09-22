@@ -55,6 +55,11 @@ a {
   background: rgb(19, 170, 77);
 }
 
+.btn:disabled {
+  background: rgb(165, 165, 165);
+  color: #333;
+}
+
 /* FORM */
 
 .form {

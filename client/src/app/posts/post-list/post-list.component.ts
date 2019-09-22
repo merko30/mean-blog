@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs";
 
-import { State } from "src/app/reducers";
 import { loadPosts } from "../posts.actions";
 import Post from "../post";
+import { State } from "src/app/reducers";
 
 @Component({
   selector: "app-post-list",
