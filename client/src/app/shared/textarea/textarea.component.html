@@ -1,6 +1,7 @@
 <div class="form-group">
   <label *ngIf="label" class="label">{{ label }}</label>
-  <input [formControlName]="name" class="input" />
+  <textarea [formControlName]="name" class="textarea" [rows]="rows"></textarea>
+
   <div
     *ngIf="
       form.controls[name].invalid &&
@@ -11,17 +12,10 @@
     <p *ngIf="form.controls[name].errors?.required" class="error">
       {{ label }} is required
     </p>
-    <p *ngIf="form.controls[name].errors?.max" class="error">
-      {{ label }} is required
-    </p>
     <p *ngIf="form.controls[name].errors?.minlength" class="error">
       {{ label }} should be longer than
       {{ form.controls[name].errors?.minlength.requiredLength }} characters
     </p>
-    <p *ngIf="form.controls[name].errors?.email" class="error">
-      Wrong email format
-    </p>
-
     <p *ngIf="form.controls[name].errors?.pattern" class="error">
       {{ label }} doesn't have proper format
     </p>

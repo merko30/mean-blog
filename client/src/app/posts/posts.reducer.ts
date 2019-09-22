@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 
-import Post from "./post";
+import { Post } from "./post";
 import {
   loadPosts,
   loadPostsSuccess,

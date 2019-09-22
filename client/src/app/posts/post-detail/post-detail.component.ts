@@ -3,7 +3,7 @@ import { Store, select } from "@ngrx/store";
 import { State } from "src/app/reducers";
 import { loadPost } from "../posts.actions";
 import { ActivatedRoute } from "@angular/router";
-import Post from "../post";
+import { Post } from "../post";
 import { Observable } from "rxjs";
 
 @Component({

@@ -72,3 +72,21 @@ a {
     width: 60%;
   }
 }
+
+.form-group {
+  margin: 0.5em 0;
+}
+
+.label {
+  display: block;
+  margin: 0.5em 0;
+}
+
+/* ERROR */
+
+.error {
+  color: crimson;
+  font-size: 0.9em;
+  padding: 0.2em;
+  text-transform: uppercase;
+}

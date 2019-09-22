@@ -5,22 +5,22 @@
 
 .title {
   color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .image {
   width: 100%;
   object-fit: cover;
+  min-height: 200px;
 }
 
 .text {
   margin: 0.2em 0 0;
-  height: 1.8em;
-  line-height: 0.9em;
-  font-size: 15px;
+  height: 2.2em;
+  line-height: 1.1em;
   color: rgb(73, 73, 73);
-  display: block; /* Fallback for non-webkit */
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* no of lines */
   text-overflow: ellipsis;
   overflow: hidden !important;
 }

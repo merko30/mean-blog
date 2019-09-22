@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import Post from "./post";
+import { Post, PostInput } from "./post";
 
 export const loadPosts = createAction("[Posts] Load posts");
 
@@ -26,4 +26,19 @@ export const loadPostSuccess = createAction(
 export const loadPostFailure = createAction(
   "[Posts] Login",
   props<{ username: string; password: string }>()
+);
+
+export const addPost = createAction(
+  "[Posts] AddPost",
+  props<{ post: PostInput }>()
+);
+
+export const addPostSuccess = createAction(
+  "[Posts] AddPostSuccess",
+  props<{ post: Post }>()
+);
+
+export const addPostFailure = createAction(
+  "[Posts] AddPostFailure",
+  props<{ error: String }>()
 );

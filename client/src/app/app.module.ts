@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
@@ -21,6 +21,7 @@ import { SharedModule } from "./shared/shared.module";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../environments/environment";
 import { AuthGuard } from "./auth/auth.guard";
+import { AuthInterceptor } from "./auth/auth.interceptor";
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, FooterComponent],
@@ -47,7 +48,10 @@ import { AuthGuard } from "./auth/auth.guard";
       logOnly: environment.production
     })
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
