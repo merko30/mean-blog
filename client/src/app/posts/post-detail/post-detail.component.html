@@ -3,4 +3,5 @@
   <h2 class="title">{{ p.title }}</h2>
   <p class="text">{{ p.body }}</p>
   <app-comment-list [comments]="p.comments"></app-comment-list>
+  <app-add-comment [id]="p._id"></app-add-comment>
 </div>

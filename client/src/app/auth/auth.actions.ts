@@ -1,6 +1,11 @@
 import { createAction, props } from "@ngrx/store";
 import { RegisterInput, LoginInput, TokenResponse } from "./user";
 
+export const setStatus = createAction(
+  "[Authentication] SetStatus",
+  props<{ status: boolean }>()
+);
+
 export const register = createAction(
   "[Authentication] Register",
   props<{ user: RegisterInput }>()

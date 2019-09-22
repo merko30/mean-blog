@@ -26,7 +26,6 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(register),
       switchMap(action => {
-        console.log(action.user);
         return this.authService.register(action.user).pipe(
           map(() => registerSuccess()),
           catchError(({ error: { message } }) =>

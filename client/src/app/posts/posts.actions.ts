@@ -9,8 +9,8 @@ export const loadPostsSuccess = createAction(
 );
 
 export const loadPostsFailure = createAction(
-  "[Posts] Login",
-  props<{ username: string; password: string }>()
+  "[Posts] LoadPostsFailure",
+  props<{ error: String }>()
 );
 
 export const loadPost = createAction(
@@ -24,8 +24,8 @@ export const loadPostSuccess = createAction(
 );
 
 export const loadPostFailure = createAction(
-  "[Posts] Login",
-  props<{ username: string; password: string }>()
+  "[Posts] LoadPostFailure",
+  props<{ error: string }>()
 );
 
 export const addPost = createAction(

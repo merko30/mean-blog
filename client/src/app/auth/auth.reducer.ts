@@ -5,7 +5,8 @@ import {
   loginFailure,
   register,
   registerSuccess,
-  registerFailure
+  registerFailure,
+  setStatus
 } from "./auth.actions";
 
 export interface State {
@@ -36,5 +37,6 @@ export const AuthReducer = createReducer(
     ...state,
     loading: false,
     error
-  }))
+  })),
+  on(setStatus, (state, { status }) => ({ ...state, loggedIn: status }))
 );
