@@ -42,3 +42,18 @@ export const addPostFailure = createAction(
   "[Posts] AddPostFailure",
   props<{ error: String }>()
 );
+
+export const editPost = createAction(
+  "[Posts] EditPost",
+  props<{ post: Post }>()
+);
+
+export const editPostSuccess = createAction(
+  "[Posts] EditPostSuccess",
+  props<{ post: Post }>()
+);
+
+export const editPostFailure = createAction(
+  "[Posts] EditPostFailure",
+  props<{ error: String }>()
+);

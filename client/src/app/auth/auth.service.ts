@@ -3,6 +3,8 @@ import { LoginInput, TokenResponse, RegisterInput } from "./user";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
+import jwt_decode from "jwt-decode";
+
 @Injectable({
   providedIn: "root"
 })
@@ -30,5 +32,10 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return localStorage.getItem("token") ? true : false;
+  }
+
+  getCurrentUserID() {
+    const token = localStorage.getItem("token");
+    return jwt_decode(token).id;
   }
 }

@@ -36,7 +36,9 @@ const create = async (req, res, next) => {
 
 const update = async (req, res, next) => {
   try {
-    const post = await Post.findByIdAndUpdate(req.params.id, req.body);
+    const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
+      new: true
+    });
     res.json({ post });
   } catch (error) {
     next(error);

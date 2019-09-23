@@ -1,8 +1,9 @@
 import Comment from "./comments/comment";
+import { User } from "../auth/user";
 
 export interface Post {
   title: String;
-  author: Object;
+  author: User;
   body: String;
   image: String;
   comments?: Comment[];

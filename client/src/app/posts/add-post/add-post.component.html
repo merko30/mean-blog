@@ -19,6 +19,6 @@
   ></app-text-input>
 
   <button class="btn btn-submit" [disabled]="!addPostForm.valid">
-    Add post
+    {{ editMode ? "Edit post" : "Add post" }}
   </button>
 </form>

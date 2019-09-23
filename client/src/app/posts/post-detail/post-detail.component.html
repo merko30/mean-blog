@@ -2,6 +2,11 @@
   <img src="{{ p.image }}" alt="{{ p.title }}" class="image" />
   <h2 class="title">{{ p.title }}</h2>
   <p class="text">{{ p.body }}</p>
+  <a
+    [routerLink]="['/posts', p._id, 'edit']"
+    *ngIf="p.author._id == currentUserID"
+    >Edit</a
+  >
   <app-comment-list [comments]="p.comments"></app-comment-list>
   <app-add-comment [id]="p._id"></app-add-comment>
 </div>

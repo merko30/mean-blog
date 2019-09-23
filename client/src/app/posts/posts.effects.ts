@@ -12,7 +12,10 @@ import {
   loadPostSuccess,
   addPost,
   addPostSuccess,
-  addPostFailure
+  addPostFailure,
+  editPost,
+  editPostSuccess,
+  editPostFailure
 } from "./posts.actions";
 import { of } from "rxjs";
 import { Router } from "@angular/router";
@@ -80,5 +83,28 @@ export class PostsEffects {
     {
       dispatch: false
     }
+  );
+
+  editPost$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(editPost),
+      mergeMap(action =>
+        this.postService.editPost(action.post).pipe(
+          map(({ post }: PostResponse) => editPostSuccess({ post })),
+          catchError(({ error: { message } }) =>
+            of(editPostFailure({ error: message }))
+          )
+        )
+      )
+    )
+  );
+
+  afterEditPost$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(editPostSuccess),
+        tap(action => this.router.navigate([`/posts/${action.post._id}`]))
+      ),
+    { dispatch: false }
   );
 }

@@ -14,3 +14,11 @@ export interface LoginInput {
 export interface TokenResponse {
   token: String;
 }
+
+export interface User {
+  _id: string;
+  name: string;
+  username: string;
+  email: string;
+  avatar: string;
+}

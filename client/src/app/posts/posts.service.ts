@@ -19,4 +19,9 @@ export class PostsService {
   addPost(post: PostInput) {
     return this.http.post(`http://localhost:3000/api/posts`, post);
   }
+
+  editPost(post: Post) {
+    console.log(post);
+    return this.http.put(`http://localhost:3000/api/posts/${post._id}`, post);
+  }
 }

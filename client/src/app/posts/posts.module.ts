@@ -15,6 +15,7 @@ import { CommentItemComponent } from "./comments/comment-item/comment-item.compo
 import { AddCommentComponent } from "./comments/add-comment/add-comment.component";
 import { CommentsService } from "./comments/comments.service";
 import { CommentsEffects } from "./comments/comments.effects";
+import { PostDetailResolverService } from "./post-detail-resolver.service";
 
 @NgModule({
   declarations: [

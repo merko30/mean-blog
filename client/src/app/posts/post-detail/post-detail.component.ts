@@ -5,6 +5,7 @@ import { loadPost } from "../posts.actions";
 import { ActivatedRoute } from "@angular/router";
 import { Post } from "../post";
 import { Observable } from "rxjs";
+import { AuthService } from "src/app/auth/auth.service";
 
 @Component({
   selector: "app-post-detail",
@@ -12,12 +13,18 @@ import { Observable } from "rxjs";
   styleUrls: ["./post-detail.component.css"]
 })
 export class PostDetailComponent implements OnInit {
-  constructor(private store: Store<State>, private router: ActivatedRoute) {
+  constructor(
+    private store: Store<State>,
+    private router: ActivatedRoute,
+    private authService: AuthService
+  ) {
     this.post = this.store.pipe(select(state => state.postsState.post));
+    this.currentUserID = this.authService.getCurrentUserID();
   }
 
   id: string;
   post: Observable<Post>;
+  currentUserID: string;
 
   ngOnInit() {
     this.router.params.subscribe(params => (this.id = params.id));
