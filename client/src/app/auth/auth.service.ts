@@ -12,14 +12,11 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   register(user: RegisterInput) {
-    return this.http.post("http://localhost:3000/api/auth/register", user);
+    return this.http.post("/api/auth/register", user);
   }
 
   login(user: LoginInput): Observable<TokenResponse> {
-    return this.http.post<TokenResponse>(
-      "http://localhost:3000/api/auth/login",
-      user
-    );
+    return this.http.post<TokenResponse>("/api/auth/login", user);
   }
 
   storeToken(token: String) {

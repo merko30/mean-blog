@@ -9,19 +9,19 @@ export class PostsService {
   constructor(private http: HttpClient) {}
 
   getPosts() {
-    return this.http.get("http://localhost:3000/api/posts");
+    return this.http.get("/api/posts");
   }
 
   getPost(id) {
-    return this.http.get(`http://localhost:3000/api/posts/${id}`);
+    return this.http.get(`/api/posts/${id}`);
   }
 
   addPost(post: PostInput) {
-    return this.http.post(`http://localhost:3000/api/posts`, post);
+    return this.http.post(`/api/posts`, post);
   }
 
   editPost(post: Post) {
     console.log(post);
-    return this.http.put(`http://localhost:3000/api/posts/${post._id}`, post);
+    return this.http.put(`/api/posts/${post._id}`, post);
   }
 }

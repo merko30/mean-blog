@@ -19,7 +19,12 @@ export class AddPostComponent implements OnInit {
     private formBuilder: FormBuilder,
     private store: Store<State>,
     private router: ActivatedRoute
-  ) {
+  ) {}
+
+  editMode: boolean;
+  addPostForm: FormGroup;
+
+  ngOnInit() {
     this.router.data.subscribe(data => {
       this.editMode = data.editMode;
       if (data.editMode) {
@@ -30,26 +35,19 @@ export class AddPostComponent implements OnInit {
     });
   }
 
-  editMode: boolean;
-  addPostForm: FormGroup;
-
-  ngOnInit() {}
-
   createForm(data?: Post) {
     this.addPostForm = this.formBuilder.group({
-      title: [
-        data.title ? data.title : "",
-        [Validators.required, Validators.minLength(10)]
-      ],
-      body: [
-        data.body ? data.body : "",
-        [Validators.required, Validators.minLength(100)]
-      ],
-      image: [
-        data.image ? data.image : "",
-        [Validators.required, Validators.pattern(imageURLRegex)]
-      ]
+      title: ["", [Validators.required, Validators.minLength(10)]],
+      body: ["", [Validators.required, Validators.minLength(100)]],
+      image: ["", [Validators.required, Validators.pattern(imageURLRegex)]]
     });
+    if (data) {
+      this.addPostForm.setValue({
+        title: data.title,
+        body: data.body,
+        image: data.image
+      });
+    }
   }
 
   onSubmit() {
