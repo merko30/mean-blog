@@ -13,4 +13,11 @@ export class CommentsService {
       comment
     );
   }
+
+  editComment(postID, commentID, comment) {
+    return this.http.put(
+      `http://localhost:3000/api/comments/${postID}/${commentID}`,
+      comment
+    );
+  }
 }

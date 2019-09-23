@@ -12,7 +12,10 @@ import {
   loadPostFailure,
   loadPostsFailure
 } from "./posts.actions";
-import { addCommentSuccess } from "./comments/comments.actions";
+import {
+  addCommentSuccess,
+  editCommentSuccess
+} from "./comments/comments.actions";
 export interface State {
   posts: Post[];
   post: Post;
@@ -49,5 +52,17 @@ export const PostsReducer = createReducer(
   on(addCommentSuccess, (state, { comment }) => ({
     ...state,
     post: { ...state.post, comments: [...state.post.comments, comment] }
-  }))
+  })),
+  on(editCommentSuccess, (state, { comment }) => {
+    const newComments = state.post.comments.slice();
+    const index = newComments.findIndex(c => c._id == comment._id);
+    newComments[index] = comment;
+    return {
+      ...state,
+      post: {
+        ...state.post,
+        comments: newComments
+      }
+    };
+  })
 );

@@ -4,7 +4,10 @@ import { CommentsService } from "./comments.service";
 import {
   addComment,
   addCommentSuccess,
-  addCommentFailure
+  addCommentFailure,
+  editComment,
+  editCommentSuccess,
+  editCommentFailure
 } from "./comments.actions";
 import { mergeMap, catchError, map, tap } from "rxjs/operators";
 import { of } from "rxjs";
@@ -26,7 +29,7 @@ export class CommentsEffects {
       ofType(addComment),
       mergeMap(action => {
         return this.commentsService
-          .addComment(action.id, action.comment)
+          .addComment(action.postID, action.comment)
           .pipe(
             map(
               ({ comment }: CommentResponse) => addCommentSuccess({ comment }),
@@ -36,6 +39,24 @@ export class CommentsEffects {
             )
           );
       })
+    )
+  );
+
+  editComment$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(editComment),
+      mergeMap(action =>
+        this.commentsService
+          .editComment(action.postID, action.commentID, action.comment)
+          .pipe(
+            map(
+              ({ comment }: CommentResponse) => editCommentSuccess({ comment }),
+              catchError(({ error: { message } }) =>
+                of(editCommentFailure({ error: message }))
+              )
+            )
+          )
+      )
     )
   );
 }

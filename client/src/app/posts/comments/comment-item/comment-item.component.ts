@@ -13,4 +13,10 @@ export class CommentItemComponent implements OnInit {
 
   @Input()
   comment: Comment;
+
+  editMode: boolean;
+
+  toggleEditMode = () => {
+    this.editMode = !this.editMode;
+  };
 }

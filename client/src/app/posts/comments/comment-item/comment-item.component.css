@@ -4,6 +4,7 @@
   background: white;
   border: 1px solid #e6e6e6;
   margin: 1em 0;
+  position: relative;
 }
 
 .author {
@@ -30,4 +31,10 @@
   border-top: 1px solid #ededed;
   font-weight: bold;
   font-size: 14px;
+}
+
+.edit-button {
+  position: absolute;
+  top: 1em;
+  right: 1em;
 }

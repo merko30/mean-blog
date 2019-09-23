@@ -4,5 +4,15 @@
     [name]="'comment'"
     [rows]="3"
   ></app-textarea>
-  <button class="btn">Add comment</button>
+  <button class="btn" type="submit">
+    {{ editMode ? "Edit comment" : "Add comment" }}
+  </button>
+  <button
+    class="btn mx-1"
+    type="button"
+    *ngIf="editMode"
+    (click)="toggleEditMode()"
+  >
+    Cancel edit
+  </button>
 </form>

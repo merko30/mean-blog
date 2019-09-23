@@ -90,3 +90,9 @@ a {
   padding: 0.2em;
   text-transform: uppercase;
 }
+
+/* MARGINS */
+
+.mx-1 {
+  margin: 0 1em;
+}

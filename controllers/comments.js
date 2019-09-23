@@ -22,7 +22,7 @@ const update = async (req, res, next) => {
       req.params.commentID,
       req.body,
       { new: true }
-    );
+    ).populate("author");
     res.json({ comment });
   } catch (error) {
     next(error);
