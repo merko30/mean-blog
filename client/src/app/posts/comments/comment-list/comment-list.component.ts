@@ -13,5 +13,8 @@ export class CommentListComponent implements OnInit {
   @Input()
   comments: Comment[];
 
+  @Input()
+  loggedIn: boolean;
+
   ngOnInit() {}
 }

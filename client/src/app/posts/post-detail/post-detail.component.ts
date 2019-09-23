@@ -19,11 +19,13 @@ export class PostDetailComponent implements OnInit {
     private authService: AuthService
   ) {
     this.post = this.store.pipe(select(state => state.postsState.post));
+    this.loggedIn = this.store.pipe(select(state => state.authState.loggedIn));
     this.currentUserID = this.authService.getCurrentUserID();
   }
 
   id: string;
   post: Observable<Post>;
+  loggedIn: Observable<Boolean>;
   currentUserID: string;
 
   ngOnInit() {

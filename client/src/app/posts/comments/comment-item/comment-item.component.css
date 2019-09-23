@@ -37,4 +37,8 @@
   position: absolute;
   top: 1em;
   right: 1em;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }

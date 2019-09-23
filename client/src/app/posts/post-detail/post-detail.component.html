@@ -7,6 +7,9 @@
     *ngIf="p.author._id == currentUserID"
     >Edit</a
   >
-  <app-comment-list [comments]="p.comments"></app-comment-list>
+  <app-comment-list
+    [comments]="p.comments"
+    [loggedIn]="loggedIn | async"
+  ></app-comment-list>
   <app-add-comment [id]="p._id"></app-add-comment>
 </div>

@@ -15,7 +15,7 @@ import { CommentItemComponent } from "./comments/comment-item/comment-item.compo
 import { AddCommentComponent } from "./comments/add-comment/add-comment.component";
 import { CommentsService } from "./comments/comments.service";
 import { CommentsEffects } from "./comments/comments.effects";
-import { PostDetailResolverService } from "./post-detail-resolver.service";
+import { AngularFontAwesomeModule } from "angular-font-awesome";
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import { PostDetailResolverService } from "./post-detail-resolver.service";
   ],
   imports: [
     CommonModule,
+    AngularFontAwesomeModule,
     PostsRoutingModule,
     SharedModule,
     ReactiveFormsModule,

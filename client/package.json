@@ -23,6 +23,8 @@
     "@ngrx/router-store": "^8.3.0",
     "@ngrx/store": "^8.3.0",
     "@ngrx/store-devtools": "^8.3.0",
+    "angular-font-awesome": "^3.1.2",
+    "font-awesome": "^4.7.0",
     "jwt-decode": "^2.2.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
