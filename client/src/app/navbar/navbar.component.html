@@ -11,7 +11,15 @@
     <a *ngIf="!(loggedIn | async)" routerLink="/login" class="nav-link"
       >Login</a
     >
-
-    <a *ngIf="loggedIn | async" routerLink="/" class="nav-link">Logout</a>
+    <a *ngIf="loggedIn | async" routerLink="/posts/add" class="nav-link"
+      >Add post</a
+    >
+    <a
+      *ngIf="loggedIn | async"
+      (click)="logout()"
+      class="nav-link"
+      style="cursor: pointer;"
+      >Logout</a
+    >
   </div>
 </div>

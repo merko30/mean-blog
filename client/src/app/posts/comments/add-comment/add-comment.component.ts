@@ -25,17 +25,12 @@ export class AddCommentComponent implements OnInit {
 
   createForm() {
     this.addCommentForm = this.formBuilder.group({
-      comment: [
-        "Let me add a new comment",
-        [Validators.required, Validators.minLength(10)]
-      ]
+      comment: ["", [Validators.required, Validators.minLength(10)]]
     });
   }
 
   onSubmit() {
-    console.log("here");
     return this.router.params.subscribe(params => {
-      console.log("here", params.id);
       this.store.dispatch(
         addComment({ comment: this.addCommentForm.value, id: params.id })
       );

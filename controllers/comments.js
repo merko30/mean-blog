@@ -3,7 +3,10 @@ const Post = require("../models/post");
 
 const create = async (req, res, next) => {
   try {
-    const comment = await new Comment(req.body).save();
+    const comment = await new Comment({
+      ...req.body,
+      author: req.user._id
+    }).save();
     const post = await Post.findById(req.params.postID);
     post.comments = [...post.comments, comment];
     await post.save();

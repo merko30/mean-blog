@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "./auth/auth.service";
 import { Store } from "@ngrx/store";
-import { setStatus } from "./auth/auth.actions";
+import { setStatus, logout } from "./auth/auth.actions";
 import { Observable } from "rxjs";
 import { State } from "./reducers";
 

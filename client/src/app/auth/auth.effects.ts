@@ -7,7 +7,9 @@ import {
   login,
   loginSuccess,
   loginFailure,
-  registerFailure
+  registerFailure,
+  logout,
+  setStatus
 } from "./auth.actions";
 import { switchMap, map, catchError, tap } from "rxjs/operators";
 import { TokenResponse } from "./user";
@@ -67,6 +69,18 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(loginSuccess),
         tap(() => this.router.navigate(["/"]))
+      ),
+    { dispatch: false }
+  );
+
+  logout$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(logout),
+        tap(() => {
+          this.authService.clearToken();
+          this.router.navigate(["/"]);
+        })
       ),
     { dispatch: false }
   );

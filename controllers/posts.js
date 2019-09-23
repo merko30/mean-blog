@@ -2,9 +2,7 @@ const Post = require("../models/post");
 
 const getAll = async (req, res, next) => {
   try {
-    const posts = await Post.find({})
-      .populate("author")
-      .populate("comments");
+    const posts = await Post.find({}).populate("author");
 
     res.json({ posts });
   } catch (error) {
@@ -15,8 +13,11 @@ const getAll = async (req, res, next) => {
 const getOne = async (req, res, next) => {
   try {
     const post = await Post.findById(req.params.id)
-      .populate("author")
-      .populate("comments");
+      .populate("author", "-password")
+      .populate({
+        path: "comments",
+        populate: { path: "author", model: "User", select: "-password" }
+      });
     res.json({ post });
   } catch (error) {
     next(error);
@@ -35,7 +36,7 @@ const create = async (req, res, next) => {
 
 const update = async (req, res, next) => {
   try {
-    const post = await Post.findByIdAndUpdate({ _id: req.params.id }, req.body);
+    const post = await Post.findByIdAndUpdate(req.params.id, req.body);
     res.json({ post });
   } catch (error) {
     next(error);

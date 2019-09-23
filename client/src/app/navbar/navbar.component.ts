@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener, Input } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { State } from "../reducers";
 import { Observable } from "rxjs";
+import { logout } from "../auth/auth.actions";
 
 @Component({
   selector: "app-navbar",
@@ -11,9 +12,9 @@ import { Observable } from "rxjs";
 export class NavbarComponent implements OnInit {
   constructor(private store: Store<State>) {
     this.getScreenSize();
+    this.loggedIn = store.select(state => state.authState.loggedIn);
   }
 
-  @Input()
   loggedIn: Observable<Boolean>;
 
   showMenu: Boolean = false;
@@ -22,6 +23,10 @@ export class NavbarComponent implements OnInit {
 
   toggleMenu() {
     this.showMenu = !this.showMenu;
+  }
+
+  logout() {
+    this.store.dispatch(logout());
   }
 
   @HostListener("window:resize", ["$event"])
