@@ -4,3 +4,8 @@
     [post]="post"
   ></app-post-item>
 </div>
+<app-pagination
+  [arrayOfNumbers]="numberOfPages"
+  (selectedNumber)="paginate($event)"
+>
+</app-pagination>

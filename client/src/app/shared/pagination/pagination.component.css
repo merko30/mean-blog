@@ -1,0 +1,31 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+.pagination-item {
+  padding: 1em;
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+  background: white;
+  cursor: pointer;
+}
+
+.pagination-item:hover {
+  background: #ededed;
+}
+
+.pagination-item.active {
+  background: #ededed;
+}
+
+.pagination-item:nth-child(odd) {
+  border-left: 1px solid #ededed;
+  border-right: 1px solid #ededed;
+}
+
+.pagination-item:last-child {
+  border-right: 1px solid #ededed;
+}

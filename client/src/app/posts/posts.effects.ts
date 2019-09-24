@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { map, mergeMap, catchError, tap } from "rxjs/operators";
 
 import { PostsService } from "./posts.service";
-import { Post, PostInput } from "./post";
+import { Post, PostsResponse } from "./post";
 
 import {
   loadPosts,
@@ -20,10 +20,6 @@ import {
 import { of } from "rxjs";
 import { Router } from "@angular/router";
 
-interface PostsResponse {
-  posts: Post[];
-}
-
 interface PostResponse {
   post: Post;
 }
@@ -38,11 +34,11 @@ export class PostsEffects {
 
   loadPosts$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loadPosts.type),
-      mergeMap(() =>
-        this.postService.getPosts().pipe(
-          map(({ posts }: PostsResponse) => {
-            return loadPostsSuccess({ posts });
+      ofType(loadPosts),
+      mergeMap(action =>
+        this.postService.getPosts(action.page).pipe(
+          map((response: PostsResponse) => {
+            return loadPostsSuccess({ response });
           })
         )
       )

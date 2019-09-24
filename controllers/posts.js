@@ -1,10 +1,20 @@
 const Post = require("../models/post");
 
 const getAll = async (req, res, next) => {
+  const perPage = 9;
+  const page = req.query.page || 1;
   try {
-    const posts = await Post.find({}).populate("author");
-
-    res.json({ posts });
+    const posts = await Post.find({})
+      .populate("author", "-password")
+      .skip(perPage * page - perPage)
+      .limit(perPage);
+    const countAll = await Post.countDocuments({});
+    res.json({
+      posts,
+      numberOfPages: Math.ceil(countAll / perPage),
+      perPage,
+      currentPage: page
+    });
   } catch (error) {
     next(error);
   }
@@ -13,6 +23,7 @@ const getAll = async (req, res, next) => {
 const getOne = async (req, res, next) => {
   try {
     const post = await Post.findById(req.params.id)
+
       .populate("author", "-password")
       .populate({
         path: "comments",

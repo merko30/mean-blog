@@ -15,3 +15,10 @@ export interface PostInput {
   body: String;
   image: String;
 }
+
+export interface PostsResponse {
+  posts: Array<Post>;
+  numberOfPages?: number;
+  currentPage?: number;
+  perPage?: number;
+}

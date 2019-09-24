@@ -1,0 +1,12 @@
+<div class="pagination" *ngIf="arrayOfNumbers && arrayOfNumbers.length > 1">
+  <div
+    class="pagination-item"
+    (click)="onClick(number)"
+    *ngFor="let number of arrayOfNumbers"
+    [ngClass]="{
+      active: activePage == number
+    }"
+  >
+    {{ number }}
+  </div>
+</div>

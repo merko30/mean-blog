@@ -21,23 +21,37 @@ export interface State {
   post: Post;
   loading: Boolean;
   error: String;
+  meta?: {
+    numberOfPages: number;
+    currentPage: number;
+  };
 }
 
 const initialState: State = {
   posts: [],
   post: null,
   loading: false,
-  error: null
+  error: null,
+  meta: {
+    numberOfPages: null,
+    currentPage: null
+  }
 };
 
 export const PostsReducer = createReducer(
   initialState,
   on(loadPosts, loadPost, addPost, state => ({ ...state, loading: true })),
-  on(loadPostsSuccess, (state, { posts }) => ({
-    ...state,
-    loading: false,
-    posts
-  })),
+  on(
+    loadPostsSuccess,
+    (state, { response: { posts, numberOfPages, currentPage } }) => ({
+      ...state,
+      posts,
+      meta: {
+        numberOfPages,
+        currentPage
+      }
+    })
+  ),
   on(loadPostSuccess, (state, { post }) => ({
     ...state,
     loading: false,

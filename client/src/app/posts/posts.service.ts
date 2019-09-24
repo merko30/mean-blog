@@ -8,8 +8,9 @@ import { PostInput, Post } from "./post";
 export class PostsService {
   constructor(private http: HttpClient) {}
 
-  getPosts() {
-    return this.http.get("/api/posts");
+  getPosts(page?: number) {
+    const URL = page ? `/api/posts?page=${page}` : "/api/posts";
+    return this.http.get(URL);
   }
 
   getPost(id) {

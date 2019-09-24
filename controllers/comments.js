@@ -10,6 +10,7 @@ const create = async (req, res, next) => {
     const post = await Post.findById(req.params.postID);
     post.comments = [...post.comments, comment];
     await post.save();
+    await comment.populate("author").execPopulate();
     res.json({ comment });
   } catch (error) {
     next(error);

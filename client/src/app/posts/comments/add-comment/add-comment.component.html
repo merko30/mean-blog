@@ -4,7 +4,7 @@
     [name]="'comment'"
     [rows]="3"
   ></app-textarea>
-  <button class="btn" type="submit">
+  <button class="btn" type="submit" [disabled]="!addCommentForm.valid">
     {{ editMode ? "Edit comment" : "Add comment" }}
   </button>
   <button
