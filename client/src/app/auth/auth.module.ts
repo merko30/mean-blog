@@ -8,6 +8,7 @@ import { SharedModule } from "../shared/shared.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { EffectsModule } from "@ngrx/effects";
 import { AuthEffects } from "./auth.effects";
+import { NotAuthGuard } from "./not-auth.guard";
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -17,6 +18,7 @@ import { AuthEffects } from "./auth.effects";
     SharedModule,
     ReactiveFormsModule,
     EffectsModule.forFeature([AuthEffects])
-  ]
+  ],
+  providers: [NotAuthGuard]
 })
 export class AuthModule {}

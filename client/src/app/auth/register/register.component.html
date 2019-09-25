@@ -1,6 +1,4 @@
-<div *ngIf="error | async as err">
-  <p>{{ err }}</p>
-</div>
+<p *ngIf="error | async as err" class="error">{{ err }}</p>
 <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <app-text-input
     [name]="'avatar'"
