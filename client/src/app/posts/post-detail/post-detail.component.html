@@ -4,7 +4,7 @@
   <p class="text">{{ p.body }}</p>
   <a
     [routerLink]="['/posts', p._id, 'edit']"
-    *ngIf="p.author._id == currentUserID"
+    *ngIf="(loggedIn | async) && p.author._id == currentUserID"
     >Edit</a
   >
   <app-comment-list

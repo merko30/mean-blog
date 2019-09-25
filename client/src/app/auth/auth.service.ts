@@ -33,6 +33,9 @@ export class AuthService {
 
   getCurrentUserID() {
     const token = localStorage.getItem("token");
-    return jwt_decode(token).id;
+    if (token) {
+      return jwt_decode(token).id;
+    }
+    return null;
   }
 }
