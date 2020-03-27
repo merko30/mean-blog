@@ -28,6 +28,9 @@ export class TextInputComponent implements OnInit {
   @Input()
   label: String;
 
+  @Input()
+  type: String = "text";
+
   @Output() onChange = new EventEmitter();
 
   change(value: String) {

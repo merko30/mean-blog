@@ -1,6 +1,6 @@
 <div class="form-group">
   <label *ngIf="label" class="label">{{ label }}</label>
-  <input [formControlName]="name" class="input" />
+  <input [formControlName]="name" class="input" [type]="type" />
   <div
     *ngIf="
       form.controls[name].invalid &&
