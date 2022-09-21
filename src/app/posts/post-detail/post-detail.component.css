@@ -1,0 +1,27 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  margin: 3em auto;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.title {
+  margin: 0.2em 0 0;
+  color: #333;
+}
+
+.text {
+  margin: 1em 0 0;
+  color: #555;
+}
+
+@media screen and (min-width: 768px) {
+  .post {
+    margin: 3em 2em;
+  }
+}
