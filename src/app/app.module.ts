@@ -6,17 +6,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
 
+import { FooterComponent } from './shared/footer/footer.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FooterComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule,
   ],
   bootstrap: [AppComponent],
 })
