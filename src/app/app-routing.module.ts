@@ -8,7 +8,7 @@ const routes: Routes = [
       import('./questions/questions.module').then((m) => m.QuestionsModule),
   },
   {
-    path: 'auth',
+    path: '',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
 ];

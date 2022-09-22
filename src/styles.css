@@ -26,6 +26,14 @@ li {
   margin: 0 auto;
 }
 
+.h-full {
+  height: 100%;
+}
+
+.w-full {
+  width: 100%;
+}
+
 .flex {
   display: flex;
 }
@@ -40,4 +48,16 @@ li {
 
 .justify-center {
   justify-content: center;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 0.5rem;
 }
