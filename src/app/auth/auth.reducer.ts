@@ -1,13 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { loginFailure, loginStart, loginSuccess } from './auth.actions';
 
-interface InitialState {
+export interface AuthState {
   loading: Boolean;
   loggedIn: Boolean;
-  error: String | null;
+  error: string | null;
 }
 
-export const initialState: InitialState = {
+export const initialState: AuthState = {
   loading: false,
   loggedIn: false,
   error: null,

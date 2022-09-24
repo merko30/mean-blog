@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { exhaustMap, map, catchError } from 'rxjs/operators';
-import { EMPTY } from 'rxjs';
+import { EMPTY, of } from 'rxjs';
 
 import { loginFailure, loginStart, loginSuccess } from './auth.actions';
 
@@ -20,9 +20,8 @@ export class AuthEffects {
             console.log(response);
             return loginSuccess();
           }),
-          catchError((error) => {
-            console.log(error);
-            return EMPTY;
+          catchError(({ error }) => {
+            return of(loginFailure({ error: error.message }));
           })
         )
       )

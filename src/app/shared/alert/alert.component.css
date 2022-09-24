@@ -1,0 +1,14 @@
+div {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid black;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.error {
+  background-color: rgb(254, 185, 197);
+  border-color: #b13535;
+  color: #b13535;
+  border-radius: 0.5rem;
+}

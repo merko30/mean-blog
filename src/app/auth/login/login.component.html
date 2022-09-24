@@ -1,6 +1,7 @@
 <h1>Sign in</h1>
 <h3>Welcome to Q app. Enter your credentials and start using the app</h3>
 <form [formGroup]="form" (submit)="onSubmit($event)" class="w-full">
+  <app-alert *ngIf="error | async">{{ error | async }}</app-alert>
   <app-field label="Email" name="email" [formGroup]="form"></app-field>
   <app-field label="Password" name="password" [formGroup]="form"></app-field>
   <app-button class="primary block w-full" type="submit">Sign in</app-button>
