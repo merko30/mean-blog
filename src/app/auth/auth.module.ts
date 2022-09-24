@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 
 import { authReducer } from './auth.reducer';
 import { AuthEffects } from './auth.effects';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -18,6 +19,7 @@ import { AuthEffects } from './auth.effects';
     CommonModule,
     AuthRoutingModule,
     SharedModule,
+    ReactiveFormsModule,
     StoreModule.forFeature('auth', authReducer),
     EffectsModule.forFeature([AuthEffects]),
   ],

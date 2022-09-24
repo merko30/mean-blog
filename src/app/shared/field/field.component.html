@@ -1,2 +1,4 @@
-<label [for]="name">{{ label }}</label>
-<input [id]="name" formControl="control" />
+<div [formGroup]="formGroup">
+  <label [for]="name">{{ label }}</label>
+  <input [id]="name" [formControlName]="name" />
+</div>
