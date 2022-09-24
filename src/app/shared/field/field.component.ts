@@ -1,24 +1,31 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  AbstractControl,
+  ControlContainer,
+  FormControl,
+  FormGroupDirective,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-field',
   templateUrl: './field.component.html',
   styleUrls: ['./field.component.css'],
+  viewProviders: [
+    {
+      provide: ControlContainer,
+      useExisting: FormGroupDirective,
+    },
+  ],
 })
 export class FieldComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
 
-  value: string | number = '';
+  value: string = '';
 
-  @Input() name: string = '';
   @Input() label: string = '';
+  @Input() name: string = '';
   @Input() error: string | undefined = undefined;
-  @Output() changeEvent = new EventEmitter<string | number>();
-
-  onChange(value: string | number): void {
-    this.value = value;
-    this.changeEvent.emit(value);
-  }
+  @Input() control: AbstractControl | null = new FormControl();
 }

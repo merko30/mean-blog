@@ -12,6 +12,7 @@ export class ButtonComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  @Input() type: ButtonVariant = ButtonVariant.primary;
+  @Input() variant: ButtonVariant = ButtonVariant.primary;
   @Input() class: string = '';
+  @Input() type: 'submit' | 'button' = 'submit';
 }

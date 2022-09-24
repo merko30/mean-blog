@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { authReducer } from './auth/auth.reducer';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -18,7 +20,8 @@ import { StoreModule } from '@ngrx/store';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ auth: authReducer }),
+    EffectsModule.forRoot([]),
   ],
   bootstrap: [AppComponent],
 })
