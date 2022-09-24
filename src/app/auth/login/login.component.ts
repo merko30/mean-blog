@@ -24,9 +24,7 @@ export class LoginComponent implements OnInit {
   onSubmit(event: Event): void {
     event.preventDefault();
     if (this.form.valid) {
-      console.log(this.form.value);
-
-      // this.store.dispatch(loginStart(this.form.value));
+      this.store.dispatch(loginStart(this.form.value));
     } else {
       console.log('not valid');
     }

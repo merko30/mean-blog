@@ -15,21 +15,18 @@ export const initialState: InitialState = {
 
 export const authReducer = createReducer(
   initialState,
-  on(loginStart, (state) => {
-    state.loading = true;
-
-    return state;
-  }),
-  on(loginSuccess, (state) => {
-    state.loading = false;
-    state.loggedIn = true;
-
-    return state;
-  }),
-  on(loginFailure, (state, { error }) => {
-    state.loading = false;
-    state.error = error;
-
-    return state;
-  })
+  on(loginStart, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(loginSuccess, (state) => ({
+    ...state,
+    loading: false,
+    loggedIn: true,
+  })),
+  on(loginFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  }))
 );

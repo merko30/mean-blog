@@ -1,9 +1,9 @@
-:host {
+div {
   width: 100%;
   margin-bottom: 1rem;
 }
 
-:host /deep/ input {
+input {
   width: 100%;
   padding: 1rem;
   border: 1px solid #ededed;
