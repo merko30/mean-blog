@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=OpenSans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=OpenSans:400;500;600;&display=swap");
 
 * {
   box-sizing: border-box;
@@ -24,6 +24,10 @@ li {
 .container {
   max-width: min(1280px, 100% - 1rem);
   margin: 0 auto;
+}
+
+.block {
+  display: block;
 }
 
 .h-full {

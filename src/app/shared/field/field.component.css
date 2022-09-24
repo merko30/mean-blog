@@ -6,7 +6,7 @@
 input {
   width: 100%;
   padding: 1rem;
-  border: 1px solid gray;
+  border: 1px solid #ededed;
   border-radius: 0.5rem;
 }
 

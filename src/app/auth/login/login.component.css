@@ -9,16 +9,11 @@
 
 h1 {
   align-self: flex-start;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-size: 2rem;
 }
 
-.primary {
-  background-color: rgb(33, 125, 246);
-  color: white;
-  font-weight: 500;
-  padding: 1rem 2rem;
-  border-radius: 1rem;
-  border: none;
-  outline: none;
+h3 {
+  margin-bottom: 2rem;
+  color: #444;
 }
