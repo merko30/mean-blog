@@ -14,15 +14,15 @@ export const register = async (
 ) => {
   try {
     const repository = AppDataSource.getRepository(User);
+
     const user = await repository.findOne({
-      where: [
-        { email: req.body.usernameOrEmail },
-        { username: req.body.usernameOrEmail },
-      ],
+      where: [{ email: req.body.email }, { username: req.body.username }],
     });
+    console.log(user);
     if (user) {
       throw new Error('User already exists, check your email or username');
     }
+
     await repository.save(req.body);
     res.json({ ok: true });
   } catch (error) {

@@ -1,9 +1,13 @@
+import { hashSync } from 'bcryptjs';
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  BeforeInsert,
+  BeforeUpdate,
+  AfterLoad,
 } from 'typeorm';
 
 @Entity()
@@ -14,11 +18,11 @@ export class User {
   @Column()
   username!: string;
 
-  @Column()
-  firstName!: string;
+  @Column({ nullable: true })
+  firstName?: string;
 
-  @Column()
-  lastName!: string;
+  @Column({ nullable: true })
+  lastName?: string;
 
   @Column()
   email!: string;

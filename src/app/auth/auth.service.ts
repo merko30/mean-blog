@@ -17,6 +17,10 @@ export class AuthService {
     email: string;
     password: string;
   }): Observable<object> {
-    return this.http.post('/api/auth/register', JSON.stringify(credentials));
+    return this.http.post('/api/auth/register', JSON.stringify(credentials), {
+      headers: {
+        'Content-type': 'application/json',
+      },
+    });
   }
 }

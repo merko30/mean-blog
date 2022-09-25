@@ -25,12 +25,15 @@ export class RegisterComponent implements OnInit {
   ) {
     this.form = this.formBuilder.group(
       {
-        username: new FormControl('', [
+        username: new FormControl('merim.hasanbegovic', [
           Validators.required,
           Validators.minLength(8),
         ]),
-        email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', [
+        email: new FormControl('merim.hasanbegovic@outlook.com', [
+          Validators.required,
+          Validators.email,
+        ]),
+        password: new FormControl('password', [
           Validators.required,
           Validators.minLength(8),
         ]),
@@ -47,14 +50,9 @@ export class RegisterComponent implements OnInit {
     event.preventDefault();
 
     if (this.form.valid) {
-      console.log('valid', this.form.value);
-
-      // this.store.dispatch(registerStart(this.form.value));
+      this.store.dispatch(registerStart(this.form.value));
     } else {
-      console.log(this.form);
-
       Object.keys(this.form.controls).forEach((field) => {
-        // {1}
         const control = this.form.get(field); // {2}
         if (control) {
           control.updateValueAndValidity();

@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 
 import { User } from '../models/user';
 
+// TODO: move database credentials to env
 const AppDataSource = new DataSource({
   type: 'postgres',
   host: 'localhost',
