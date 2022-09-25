@@ -25,15 +25,12 @@ export class RegisterComponent implements OnInit {
   ) {
     this.form = this.formBuilder.group(
       {
-        username: new FormControl('merim.hasanbegovic', [
+        username: new FormControl('', [
           Validators.required,
           Validators.minLength(8),
         ]),
-        email: new FormControl('merim.hasanbegovic@outlook.com', [
-          Validators.required,
-          Validators.email,
-        ]),
-        password: new FormControl('password', [
+        email: new FormControl('', [Validators.required, Validators.email]),
+        password: new FormControl('', [
           Validators.required,
           Validators.minLength(8),
         ]),
@@ -53,7 +50,7 @@ export class RegisterComponent implements OnInit {
       this.store.dispatch(registerStart(this.form.value));
     } else {
       Object.keys(this.form.controls).forEach((field) => {
-        const control = this.form.get(field); // {2}
+        const control = this.form.get(field);
         if (control) {
           control.updateValueAndValidity();
         }

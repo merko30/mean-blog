@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { compare } from 'bcryptjs';
+import { compare, hashSync } from 'bcryptjs';
 
 import createToken from '../utils/createToken';
 
@@ -18,12 +18,14 @@ export const register = async (
     const user = await repository.findOne({
       where: [{ email: req.body.email }, { username: req.body.username }],
     });
-    console.log(user);
     if (user) {
       throw new Error('User already exists, check your email or username');
     }
 
-    await repository.save(req.body);
+    await repository.save({
+      ...req.body,
+      password: hashSync(req.body.password, 10),
+    });
     res.json({ ok: true });
   } catch (error) {
     next(error);
@@ -45,6 +47,7 @@ export const login = async (
     });
     if (user) {
       const validPassword = await compare(req.body.password, user.password);
+      console.log(user);
 
       if (validPassword) {
         const token = createToken({ id: user.id });

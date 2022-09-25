@@ -38,6 +38,7 @@ export const authReducer = createReducer(
   on(registerStart, (state) => ({
     ...state,
     loading: true,
+    error: null,
   })),
   on(registerSuccess, (state) => ({
     ...state,

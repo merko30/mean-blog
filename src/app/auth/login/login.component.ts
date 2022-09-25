@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private store: Store<AppState>) {
     this.form = new FormGroup({
-      email: new FormControl('', [Validators.email]),
+      usernameOrEmail: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.minLength(8)]),
     });
   }

@@ -8,8 +8,19 @@ import { Observable } from 'rxjs';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(credentials: { email: string; password: string }): Observable<object> {
-    return this.http.post('/api/auth/login', JSON.stringify(credentials));
+  login(credentials: {
+    usernameOrEmail: string;
+    password: string;
+  }): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>(
+      '/api/auth/login',
+      JSON.stringify(credentials),
+      {
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }
+    );
   }
 
   register(credentials: {
