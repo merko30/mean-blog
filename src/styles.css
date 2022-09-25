@@ -65,3 +65,15 @@ li {
 .gap-4 {
   gap: 0.5rem;
 }
+
+.text-error {
+  color: #f43434;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}

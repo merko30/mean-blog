@@ -11,4 +11,12 @@ export class AuthService {
   login(credentials: { email: string; password: string }): Observable<object> {
     return this.http.post('/api/auth/login', JSON.stringify(credentials));
   }
+
+  register(credentials: {
+    username: string;
+    email: string;
+    password: string;
+  }): Observable<object> {
+    return this.http.post('/api/auth/register', JSON.stringify(credentials));
+  }
 }

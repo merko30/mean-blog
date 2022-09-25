@@ -1,1 +1,8 @@
-<p>register works!</p>
+<h1>Sign up</h1>
+<form [formGroup]="form" (submit)="onSubmit($event)" class="w-full">
+  <app-alert *ngIf="error | async">{{ error | async }}</app-alert>
+  <app-field label="Username" name="username" [formGroup]="form"></app-field>
+  <app-field label="Email" name="email" [formGroup]="form"></app-field>
+  <app-field label="Password" name="password" [formGroup]="form"></app-field>
+  <app-button class="primary block w-full" type="submit">Sign in</app-button>
+</form>

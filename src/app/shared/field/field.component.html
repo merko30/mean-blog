@@ -1,4 +1,10 @@
 <div [formGroup]="formGroup">
   <label [for]="name">{{ label }}</label>
   <input [id]="name" [formControlName]="name" />
+  <span
+    class="block text-error mt-2"
+    *ngIf="formGroup.controls && formGroup.controls[name]"
+  >
+    {{ formGroup.controls[name].errors | error: name }}
+  </span>
 </div>
