@@ -1,1 +1,3 @@
-<p>questions works!</p>
+<div *ngFor="let question of questions | async">
+  <p>{{ question.subject }}</p>
+</div>

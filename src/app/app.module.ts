@@ -10,8 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared/shared.module';
-import { authReducer } from './auth/auth.reducer';
+
 import { AuthInterceptor } from './auth/auth.interceptor';
+
+import { authReducer } from './auth/auth.reducer';
+import { questionReducer } from './questions/question.reducer';
+
+import { AuthEffects } from './auth/auth.effects';
+import { QuestionEffects } from './questions/question.effects';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -21,7 +27,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    StoreModule.forRoot({ auth: authReducer }),
+    StoreModule.forRoot({ auth: authReducer, questions: questionReducer }),
     EffectsModule.forRoot([]),
   ],
   bootstrap: [AppComponent],
