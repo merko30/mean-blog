@@ -2,7 +2,9 @@
   <div>
     <div class="flex items-center justify-between">
       <h1>Top questions</h1>
-      <app-button>Add question</app-button>
+      <app-button [isLink]="true" href="/questions/create"
+        >Add question</app-button
+      >
     </div>
 
     <app-question

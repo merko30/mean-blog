@@ -8,9 +8,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ButtonComponent } from './button/button.component';
 import { AlertComponent } from './alert/alert.component';
 import { ErrorPipe } from '../pipes/error.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   declarations: [
     FieldComponent,
     NavbarComponent,

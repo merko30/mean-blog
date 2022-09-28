@@ -15,4 +15,6 @@ export class ButtonComponent implements OnInit {
   @Input() variant: ButtonVariant = ButtonVariant.primary;
   @Input() class: string = '';
   @Input() type: 'submit' | 'button' = 'submit';
+  @Input() isLink: Boolean = false;
+  @Input() href?: string;
 }

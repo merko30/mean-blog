@@ -1,3 +1,7 @@
-<button [class]="variant" [type]="type">
+<button *ngIf="!(isLink && href)" [class]="variant" [type]="type">
   <ng-content></ng-content>
 </button>
+
+<a [routerLink]="href" *ngIf="isLink && href" [class]="variant">
+  <ng-content></ng-content>
+</a>
