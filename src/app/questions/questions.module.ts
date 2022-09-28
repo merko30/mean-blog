@@ -10,12 +10,16 @@ import { questionReducer } from './question.reducer';
 import { QuestionEffects } from './question.effects';
 import { QuestionDetailsComponent } from './question-details/question-details.component';
 import { SharedModule } from '../shared/shared.module';
+import { CreateQuestionComponent } from './create-question/create-question.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     QuestionsComponent,
     QuestionComponent,
     QuestionDetailsComponent,
+    CreateQuestionComponent,
   ],
   imports: [
     QuestionsRoutingModule,
@@ -23,6 +27,8 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     StoreModule.forFeature('questions', questionReducer),
     EffectsModule.forFeature([QuestionEffects]),
+    ReactiveFormsModule,
+    AngularEditorModule,
   ],
 })
 export class QuestionsModule {}

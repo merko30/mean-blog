@@ -3,7 +3,11 @@
   <input [id]="name" [formControlName]="name" />
   <span
     class="block text-error mt-2"
-    *ngIf="formGroup.controls && formGroup.controls[name]"
+    *ngIf="
+      formGroup.controls &&
+      formGroup.controls[name] &&
+      formGroup.controls[name].touched
+    "
   >
     {{ formGroup.controls[name].errors | error: label }}
   </span>

@@ -1,0 +1,9 @@
+<h1>Ask a question</h1>
+
+<form [formGroup]="form" (submit)="onSubmit($event)">
+  <app-field [formGroup]="form" name="subject" label="Title"></app-field>
+  <angular-editor
+    formControlName="content"
+    [config]="editorConfig"
+  ></angular-editor>
+</form>

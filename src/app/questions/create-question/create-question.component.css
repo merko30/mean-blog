@@ -1,0 +1,8 @@
+:host {
+  width: min(650px, 100% - 1rem);
+  margin: 0 auto;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
