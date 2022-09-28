@@ -1,3 +1,15 @@
-<div *ngFor="let question of questions | async">
-  <p>{{ question.subject }}</p>
+<div class="main-grid">
+  <div>
+    <div class="flex items-center justify-between">
+      <h1>Top questions</h1>
+      <app-button>Add question</app-button>
+    </div>
+
+    <app-question
+      *ngFor="let question of questions | async"
+      [question]="question"
+    >
+    </app-question>
+  </div>
+  <div>side content</div>
 </div>

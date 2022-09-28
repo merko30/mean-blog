@@ -1,0 +1,12 @@
+li {
+  display: flex;
+  padding: 1rem 0;
+}
+
+li > div:first-child {
+  margin-right: 1rem;
+}
+
+h1 {
+  font-size: larger;
+}
