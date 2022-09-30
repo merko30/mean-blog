@@ -13,4 +13,11 @@ export class QuestionService {
   getAll(): Observable<{ questions: Question[] }> {
     return this.http.get<{ questions: Question[] }>('/api/questions');
   }
+
+  create(body: Question): Observable<{ question: Question }> {
+    return this.http.post<{ question: Question }>(
+      '/api/questions',
+      JSON.stringify(body)
+    );
+  }
 }

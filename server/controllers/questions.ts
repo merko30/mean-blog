@@ -7,9 +7,29 @@ export const getQuestions = async (
   res: Response,
   next: NextFunction
 ) => {
-  const repository = AppDataSource.getRepository(Question);
+  try {
+    const repository = AppDataSource.getRepository(Question);
 
-  const questions = await repository.find();
+    const questions = await repository.find();
 
-  res.json({ questions });
+    res.json({ questions });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const createQuestion = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const repository = AppDataSource.getRepository(Question);
+
+    const question = await repository.save(req.body);
+
+    res.json({ question });
+  } catch (error) {
+    next(error);
+  }
 };

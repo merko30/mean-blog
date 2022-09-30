@@ -1,6 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { loadQuestions, loadQuestionsSuccess } from './question.actions';
+import {
+  createQuestion,
+  createQuestionSuccess,
+  loadQuestions,
+  loadQuestionsSuccess,
+} from './question.actions';
 
 import { Question } from './types';
 
@@ -23,5 +28,11 @@ export const questionReducer = createReducer(
     ...state,
     loading: false,
     questions,
+  })),
+  on(createQuestion, (state) => ({ ...state, loading: true })),
+  on(createQuestionSuccess, (state, { question }) => ({
+    ...state,
+    loading: false,
+    questions: [...state.questions, question],
   }))
 );

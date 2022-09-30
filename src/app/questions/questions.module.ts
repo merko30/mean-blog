@@ -13,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { ReactiveFormsModule } from '@angular/forms';
+import { QuestionService } from './question.service';
 
 @NgModule({
   declarations: [
@@ -30,5 +31,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     AngularEditorModule,
   ],
+  providers: [QuestionService],
 })
 export class QuestionsModule {}

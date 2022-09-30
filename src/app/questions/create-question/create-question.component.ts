@@ -7,6 +7,8 @@ import {
 } from '@angular/forms';
 
 import { AngularEditorConfig } from '@kolkov/angular-editor/public-api';
+import { Store } from '@ngrx/store';
+import { createQuestion } from '../question.actions';
 
 @Component({
   selector: 'app-create-question',
@@ -16,7 +18,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor/public-api';
 export class CreateQuestionComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private store: Store) {
     this.form = this.formBuilder.group({
       subject: new FormControl('', [
         Validators.required,
@@ -28,13 +30,13 @@ export class CreateQuestionComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  editorConfig: AngularEditorConfig = { height: '300px' };
+  editorConfig: AngularEditorConfig = { editable: true, height: '300px' };
 
   onSubmit(event: Event): void {
     event.preventDefault();
 
     if (this.form.valid) {
-      console.log('valid', this.form.value);
+      this.store.dispatch(createQuestion({ question: this.form.value }));
     } else {
       Object.keys(this.form.controls).forEach((field) => {
         const control = this.form.get(field);

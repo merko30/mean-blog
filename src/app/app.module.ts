@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,8 +16,6 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { authReducer } from './auth/auth.reducer';
 import { questionReducer } from './questions/question.reducer';
 
-import { AuthEffects } from './auth/auth.effects';
-import { QuestionEffects } from './questions/question.effects';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -31,6 +29,12 @@ import { QuestionEffects } from './questions/question.effects';
     EffectsModule.forRoot([]),
   ],
   bootstrap: [AppComponent],
-  providers: [AuthInterceptor],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class AppModule {}

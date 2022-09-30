@@ -13,3 +13,13 @@ export const failure = createAction(
   '[Question] Failure',
   props<{ error: string }>()
 );
+
+export const createQuestion = createAction(
+  '[Question] Create question',
+  props<{ question: Question }>()
+);
+
+export const createQuestionSuccess = createAction(
+  '[Question] Create question success',
+  props<{ question: Question }>()
+);

@@ -2,6 +2,6 @@
   <ng-content></ng-content>
 </button>
 
-<a [routerLink]="href" *ngIf="isLink && href" [class]="variant">
+<a *ngIf="isLink && href" [routerLink]="href" [class]="variant">
   <ng-content></ng-content>
 </a>
