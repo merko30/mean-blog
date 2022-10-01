@@ -10,7 +10,9 @@ import { Question } from '../types';
 export class QuestionComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.question);
+  }
 
   @Input()
   question!: Question;

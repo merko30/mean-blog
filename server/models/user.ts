@@ -8,7 +8,11 @@ import {
   BeforeInsert,
   BeforeUpdate,
   AfterLoad,
+  ManyToOne,
+  OneToMany,
+  JoinColumn,
 } from 'typeorm';
+import { Question } from './question';
 
 @Entity()
 export class User {
@@ -29,6 +33,10 @@ export class User {
 
   @Column()
   password!: string;
+
+  @OneToMany(() => Question, (question) => question.author)
+  @JoinColumn({ name: 'authorId' })
+  questions?: Question[];
 
   @CreateDateColumn()
   createdAt!: Date;

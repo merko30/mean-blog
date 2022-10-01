@@ -10,7 +10,7 @@ export const getQuestions = async (
   try {
     const repository = AppDataSource.getRepository(Question);
 
-    const questions = await repository.find();
+    const questions = await repository.find({ relations: { author: true } });
 
     res.json({ questions });
   } catch (error) {
@@ -26,7 +26,10 @@ export const createQuestion = async (
   try {
     const repository = AppDataSource.getRepository(Question);
 
-    const question = await repository.save(req.body);
+    const question = await repository.save({
+      ...req.body,
+      authorId: req.user.id,
+    });
 
     res.json({ question });
   } catch (error) {

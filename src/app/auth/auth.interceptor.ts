@@ -4,6 +4,7 @@ import {
   HttpInterceptor,
   HttpHandler,
   HttpRequest,
+  HttpHeaders,
 } from '@angular/common/http';
 
 @Injectable()
@@ -11,19 +12,18 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const authReq = req.clone({
-      setHeaders: { 'Content-Type': 'application/json' },
-    });
-
     const authToken = localStorage.getItem('token');
 
-    console.log('INTERCEPTED');
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      ...(authToken
+        ? {
+            Authorization: `Bearer ${authToken}`,
+          }
+        : {}),
+    });
 
-    if (authToken) {
-      authReq.headers.append('Authorization', `Bearer ${authToken}`);
-    }
-
-    console.log(authReq.headers);
+    const authReq = req.clone({ headers });
 
     return next.handle(authReq);
   }
