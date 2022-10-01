@@ -7,6 +7,7 @@ import {
   OneToMany,
   JoinColumn,
 } from 'typeorm';
+import { Answer } from './answer';
 import { Question } from './question';
 import { Vote } from './vote';
 
@@ -33,6 +34,10 @@ export class User {
   @OneToMany(() => Question, (question) => question.author)
   @JoinColumn({ name: 'authorId' })
   questions?: Question[];
+
+  @OneToMany(() => Answer, (answer) => answer.author)
+  @JoinColumn({ name: 'authorId' })
+  answers?: Answer[];
 
   @OneToMany(() => Vote, (vote) => vote.user)
   @JoinColumn({ name: 'userId' })

@@ -7,32 +7,32 @@ import {
   ManyToOne,
   OneToMany,
 } from 'typeorm';
-import { Answer } from './answer';
+import { Question } from './question';
 import { User } from './user';
 import { Vote } from './vote';
 
 @Entity()
-export class Question {
+export class Answer {
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column()
-  subject!: string;
-
-  @Column()
   content!: string;
 
-  @ManyToOne(() => User, (user) => user.questions)
+  @ManyToOne(() => User, (user) => user.answers)
   author!: User;
 
-  @Column('int', { nullable: true })
+  @Column({ nullable: true })
   authorId?: number;
 
   @OneToMany(() => Vote, (vote) => vote.question)
   votes?: Vote[];
 
-  @OneToMany(() => Answer, (answer) => answer.question)
-  answers?: Answer[];
+  @ManyToOne(() => Question, (question) => question.answers)
+  question!: Question;
+
+  @Column({ nullable: true })
+  questionId?: number;
 
   @CreateDateColumn()
   createdAt!: Date;

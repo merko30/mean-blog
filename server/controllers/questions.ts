@@ -14,6 +14,7 @@ export const getQuestions = async (
       .createQueryBuilder('question')
       .leftJoinAndSelect('question.author', 'author')
       .loadRelationCountAndMap('question.voteCount', 'question.votes')
+      .loadRelationCountAndMap('question.answerCount', 'question.answers')
       .getMany();
 
     res.json({ questions });

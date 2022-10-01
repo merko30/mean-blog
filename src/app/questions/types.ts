@@ -23,4 +23,5 @@ export interface Question {
   updatedAt: Date;
   votes: Vote[];
   voteCount: number;
+  answerCount: number;
 }

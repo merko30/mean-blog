@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Answer } from './answer';
 import { Question } from './question';
 import { User } from './user';
 
@@ -18,11 +19,17 @@ export class Vote {
   @Column()
   userId!: number;
 
-  @ManyToOne(() => Question, (question) => question.votes)
+  @ManyToOne(() => Question, (question) => question.votes, { nullable: true })
   question!: Question;
 
-  @Column()
+  @Column({ nullable: true })
   questionId!: number;
+
+  @ManyToOne(() => Answer, (answer) => answer.votes, { nullable: true })
+  answer?: Answer;
+
+  @Column({ nullable: true })
+  answerId?: number;
 
   @Column({ default: VoteType.positive })
   type!: VoteType;
