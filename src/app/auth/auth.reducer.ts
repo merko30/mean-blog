@@ -8,8 +8,8 @@ import {
 } from './auth.actions';
 
 export interface AuthState {
-  loading: Boolean;
-  loggedIn: Boolean;
+  loading: boolean;
+  loggedIn: boolean;
   error: string | null;
 }
 
