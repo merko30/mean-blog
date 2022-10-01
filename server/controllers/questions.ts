@@ -10,7 +10,11 @@ export const getQuestions = async (
   try {
     const repository = AppDataSource.getRepository(Question);
 
-    const questions = await repository.find({ relations: { author: true } });
+    const questions = await repository
+      .createQueryBuilder('question')
+      .leftJoinAndSelect('question.author', 'author')
+      .loadRelationCountAndMap('question.voteCount', 'question.votes')
+      .getMany();
 
     res.json({ questions });
   } catch (error) {

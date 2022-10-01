@@ -1,18 +1,14 @@
-import { hashSync } from 'bcryptjs';
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  BeforeInsert,
-  BeforeUpdate,
-  AfterLoad,
-  ManyToOne,
   OneToMany,
   JoinColumn,
 } from 'typeorm';
 import { Question } from './question';
+import { Vote } from './vote';
 
 @Entity()
 export class User {
@@ -37,6 +33,10 @@ export class User {
   @OneToMany(() => Question, (question) => question.author)
   @JoinColumn({ name: 'authorId' })
   questions?: Question[];
+
+  @OneToMany(() => Vote, (vote) => vote.user)
+  @JoinColumn({ name: 'userId' })
+  votes?: Question[];
 
   @CreateDateColumn()
   createdAt!: Date;

@@ -47,7 +47,6 @@ export const login = async (
     });
     if (user) {
       const validPassword = await compare(req.body.password, user.password);
-      console.log(user);
 
       if (validPassword) {
         const token = createToken({ id: user.id });

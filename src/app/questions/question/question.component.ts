@@ -7,12 +7,8 @@ import { Question } from '../types';
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.css'],
 })
-export class QuestionComponent implements OnInit {
+export class QuestionComponent {
   constructor() {}
-
-  ngOnInit(): void {
-    console.log(this.question);
-  }
 
   @Input()
   question!: Question;

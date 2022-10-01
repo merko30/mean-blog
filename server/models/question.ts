@@ -4,11 +4,11 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
-  JoinColumn,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
 import { User } from './user';
+import { Vote } from './vote';
 
 @Entity()
 export class Question {
@@ -26,6 +26,9 @@ export class Question {
 
   @Column('int', { nullable: true })
   authorId?: number;
+
+  @OneToMany(() => Vote, (vote) => vote.question)
+  votes?: Vote[];
 
   @CreateDateColumn()
   createdAt!: Date;
