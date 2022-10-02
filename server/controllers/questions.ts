@@ -23,6 +23,24 @@ export const getQuestions = async (
   }
 };
 
+export const getQuestion = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const repository = AppDataSource.getRepository(Question);
+
+    const question = await repository.findOne({
+      where: { id: parseInt(req.params.id) },
+    });
+
+    res.json({ question });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const createQuestion = async (
   req: Request,
   res: Response,

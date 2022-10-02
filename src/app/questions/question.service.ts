@@ -20,4 +20,8 @@ export class QuestionService {
       JSON.stringify(body)
     );
   }
+
+  getSingle(id: number): Observable<{ question: Question }> {
+    return this.http.get<{ question: Question }>(`/api/questions/${id}`);
+  }
 }

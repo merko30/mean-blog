@@ -1,6 +1,12 @@
 li {
+  padding: 1rem;
+  border-bottom: 1px solid #ededed;
+}
+
+a {
   display: flex;
-  padding: 1rem 0;
+  text-decoration: none;
+  color: unset;
 }
 
 li > div:first-child {
@@ -9,4 +15,30 @@ li > div:first-child {
 
 h1 {
   font-size: larger;
+}
+
+.info {
+  flex: none;
+}
+
+.info p {
+  margin-bottom: 0.25rem;
+  padding: 0 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  border-left: 5px solid rgb(199, 129, 0);
+  background-color: rgba(199, 129, 0, 0.05);
+}
+
+.content {
+  width: 100%;
+}
+
+.content h1 {
+  font-weight: 500;
+}
+
+.author {
+  font-size: 0.875rem;
+  color: rgb(47, 47, 47);
 }

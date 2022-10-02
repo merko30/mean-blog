@@ -6,8 +6,10 @@ import {
   createQuestion,
   createQuestionSuccess,
   failure,
+  loadQuestion,
   loadQuestions,
   loadQuestionsSuccess,
+  loadQuestionSuccess,
 } from './question.actions';
 
 import { QuestionService } from './question.service';
@@ -37,6 +39,18 @@ export class QuestionEffects {
       exhaustMap(({ question }) =>
         this.questionService.create(question).pipe(
           map((question) => createQuestionSuccess(question)),
+          catchError((error) => of(failure({ error })))
+        )
+      )
+    )
+  );
+
+  getQuestion$ = createEffect(() =>
+    this.actions.pipe(
+      ofType(loadQuestion),
+      mergeMap(({ id }) =>
+        this.questionService.getSingle(id).pipe(
+          map(({ question }) => loadQuestionSuccess({ question })),
           catchError((error) => of(failure({ error })))
         )
       )

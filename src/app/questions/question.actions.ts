@@ -23,3 +23,13 @@ export const createQuestionSuccess = createAction(
   '[Question] Create question success',
   props<{ question: Question }>()
 );
+
+export const loadQuestion = createAction(
+  '[Question] Load question',
+  props<{ id: number }>()
+);
+
+export const loadQuestionSuccess = createAction(
+  '[Question] Load question success',
+  props<{ question: Question }>()
+);

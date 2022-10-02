@@ -16,6 +16,7 @@ export interface Vote {
 }
 
 export interface Question {
+  id: number;
   subject: string;
   content: string;
   author: User;
