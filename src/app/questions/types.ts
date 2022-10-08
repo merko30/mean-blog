@@ -15,6 +15,16 @@ export interface Vote {
   type: VoteType;
 }
 
+export interface Answer {
+  id: number;
+  content: string;
+  author: User;
+  createdAt: Date;
+  updatedAt: Date;
+  votes: Vote[];
+  voteCount: number;
+}
+
 export interface Question {
   id: number;
   subject: string;
@@ -23,6 +33,7 @@ export interface Question {
   createdAt: Date;
   updatedAt: Date;
   votes: Vote[];
+  answers: Answer[];
   voteCount: number;
   answerCount: number;
 }

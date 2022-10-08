@@ -33,6 +33,11 @@ export const getQuestion = async (
 
     const question = await repository.findOne({
       where: { id: parseInt(req.params.id) },
+      relations: {
+        author: true,
+        answers: true,
+        votes: true,
+      },
     });
 
     res.json({ question });

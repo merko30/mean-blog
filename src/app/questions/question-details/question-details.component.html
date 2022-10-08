@@ -1,4 +1,19 @@
-<div *ngIf="question">
-  {{ question.subject }}
-  {{ question.content }}
+<div class="main-grid">
+  <div *ngIf="loading | async">loading...</div>
+  <div *ngIf="question">
+    <h1>{{ question.subject }}</h1>
+    <div class="info">
+      <span>{{ question.createdAt }}</span> | <span>0 views</span>
+    </div>
+    <hr />
+    <div [outerHTML]="question.content"></div>
+    <div class="flex">
+      <p>by {{ question.author.username }}</p>
+    </div>
+    <h2>{{ question.answers.length }} answers</h2>
+    <app-answer
+      *ngFor="let answer of question.answers"
+      [answer]="answer"
+    ></app-answer>
+  </div>
 </div>

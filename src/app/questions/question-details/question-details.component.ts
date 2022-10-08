@@ -24,8 +24,10 @@ export class QuestionDetailsComponent implements OnInit {
       .subscribe((question) => {
         this.question = question;
       });
+    this.loading = this.store.select((state) => state.questions.loading);
   }
 
+  loading: Observable<Boolean>;
   question?: Question | null;
 
   ngOnInit(): void {
