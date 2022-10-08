@@ -1,0 +1,14 @@
+.wrapper {
+  padding: 1rem 0;
+  flex-direction: column;
+  border-radius: 0.5rem;
+}
+
+.content {
+  padding: 0 1rem;
+}
+
+p {
+  align-self: flex-end;
+  padding: 0 1rem;
+}

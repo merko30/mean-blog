@@ -54,6 +54,10 @@ li {
   justify-content: center;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .column {
   flex-direction: column;
 }
@@ -70,8 +74,24 @@ li {
   gap: 2rem;
 }
 
+.background {
+  background-color: rgba(199, 129, 0, 0.05);
+}
+
 .text-error {
   color: #f43434;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.py-8 {
+  padding: 2rem 0;
 }
 
 .mt-2 {
@@ -80,6 +100,22 @@ li {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.text-lg {
+  font-size: large;
 }
 
 .main-grid {

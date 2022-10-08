@@ -12,13 +12,16 @@ export const createAnswer = async (
   try {
     const repository = AppDataSource.getRepository(Answer);
 
-    const answer = await repository.save({
+    const createdAnswer = await repository.save({
       ...req.body,
       questionId: req.params.id,
       authorId: req.user.id,
     });
 
-    console.log({ answer });
+    const answer = await repository.findOne({
+      where: { id: createdAnswer.id },
+      relations: { author: true },
+    });
 
     res.json({ answer });
   } catch (error) {

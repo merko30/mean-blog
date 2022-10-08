@@ -1,4 +1,6 @@
-<div>
-  <h4>{{ answer.content }}</h4>
+<div class="wrapper background mb-2 flex">
+  <div class="content">
+    <div [outerHTML]="answer.content"></div>
+  </div>
   <p>by {{ answer.author.username }}</p>
 </div>

@@ -6,15 +6,18 @@
       <span>{{ question.createdAt }}</span> | <span>0 views</span>
     </div>
     <hr />
-    <div [outerHTML]="question.content"></div>
-    <div class="flex">
+    <div class="p-4 background">
+      <div [outerHTML]="question.content"></div>
+    </div>
+    <div class="flex justify-end mt-4">
       <p>by {{ question.author.username }}</p>
     </div>
-    <h2>{{ question.answers.length }} answers</h2>
+    <h2 class="mt-8 mb-2">{{ question.answers.length }} answers</h2>
     <app-answer
       *ngFor="let answer of question.answers"
       [answer]="answer"
     ></app-answer>
+    <hr />
     <app-create-answer [questionId]="question.id"></app-create-answer>
   </div>
 </div>

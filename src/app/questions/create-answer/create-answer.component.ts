@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { AngularEditorConfig } from '@kolkov/angular-editor/lib/config';
 
 import { Store } from '@ngrx/store';
 
@@ -27,6 +28,8 @@ export class CreateAnswerComponent implements OnInit {
   @Input() questionId!: number;
 
   form: FormGroup;
+
+  editorConfig: AngularEditorConfig = { editable: true, height: '300px' };
 
   onSubmit(event: Event): void {
     event.preventDefault();

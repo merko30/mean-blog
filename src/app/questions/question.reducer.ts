@@ -55,7 +55,7 @@ export const questionReducer = createReducer(
     answerLoading: false,
     question: {
       ...state.question!,
-      answers: [...state.question!.answers, answer],
+      answers: [answer, ...state.question!.answers],
     },
   }))
 );

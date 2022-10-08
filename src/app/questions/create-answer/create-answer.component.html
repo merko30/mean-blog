@@ -1,10 +1,10 @@
-<form [formGroup]="form" (submit)="onSubmit($event)" class="w-full">
-  <textarea
-    placeholder="Your answer"
-    aria-label="answer"
+<form [formGroup]="form" (submit)="onSubmit($event)" class="w-full mt-4">
+  <label for="content" class="block mb-4 text-lg">Your answer</label>
+  <angular-editor
+    id="content"
     formControlName="content"
-    rows="6"
-    class="w-full"
-  ></textarea>
+    [config]="editorConfig"
+  ></angular-editor>
+
   <app-button type="submit">Answer</app-button>
 </form>
