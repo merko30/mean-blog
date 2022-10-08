@@ -15,6 +15,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { QuestionService } from './question.service';
 import { AnswerComponent } from './answer/answer.component';
+import { CreateAnswerComponent } from './create-answer/create-answer.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AnswerComponent } from './answer/answer.component';
     QuestionDetailsComponent,
     CreateQuestionComponent,
     AnswerComponent,
+    CreateAnswerComponent,
   ],
   imports: [
     QuestionsRoutingModule,

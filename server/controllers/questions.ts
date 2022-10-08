@@ -35,7 +35,9 @@ export const getQuestion = async (
       where: { id: parseInt(req.params.id) },
       relations: {
         author: true,
-        answers: true,
+        answers: {
+          author: true,
+        },
         votes: true,
       },
     });

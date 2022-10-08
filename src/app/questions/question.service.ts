@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Question } from './types';
+import { Question, Answer } from './types';
 
 @Injectable({
   providedIn: 'root',
@@ -23,5 +23,14 @@ export class QuestionService {
 
   getSingle(id: number): Observable<{ question: Question }> {
     return this.http.get<{ question: Question }>(`/api/questions/${id}`);
+  }
+
+  createAnswer(answer: Partial<Answer>): Observable<{ answer: Answer }> {
+    console.log(answer);
+
+    return this.http.post<{ answer: Answer }>(
+      `/api/questions/${answer.questionId}/answers`,
+      JSON.stringify(answer)
+    );
   }
 }

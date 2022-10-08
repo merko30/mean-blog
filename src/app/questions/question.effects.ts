@@ -3,6 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, mergeMap, of } from 'rxjs';
 
 import {
+  createAnswerSuccess,
+  createAnswer,
   createQuestion,
   createQuestionSuccess,
   failure,
@@ -51,6 +53,18 @@ export class QuestionEffects {
       mergeMap(({ id }) =>
         this.questionService.getSingle(id).pipe(
           map(({ question }) => loadQuestionSuccess({ question })),
+          catchError((error) => of(failure({ error })))
+        )
+      )
+    )
+  );
+
+  createAnswer$ = createEffect(() =>
+    this.actions.pipe(
+      ofType(createAnswer),
+      exhaustMap(({ answer }) =>
+        this.questionService.createAnswer(answer).pipe(
+          map(({ answer }) => createAnswerSuccess({ answer })),
           catchError((error) => of(failure({ error })))
         )
       )

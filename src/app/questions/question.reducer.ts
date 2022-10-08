@@ -1,6 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 
 import {
+  createAnswerSuccess,
+  createAnswer,
   createQuestion,
   createQuestionSuccess,
   loadQuestion,
@@ -15,6 +17,7 @@ export interface QuestionState {
   questions: Question[];
   question: Question | null;
   loading: Boolean;
+  answerLoading: Boolean;
   error: String | null;
 }
 
@@ -22,6 +25,7 @@ const initialState: QuestionState = {
   questions: [],
   question: null,
   loading: false,
+  answerLoading: false,
   error: null,
 };
 
@@ -44,5 +48,14 @@ export const questionReducer = createReducer(
     ...state,
     loading: false,
     question,
+  })),
+  on(createAnswer, (state) => ({ ...state, answerLoading: true })),
+  on(createAnswerSuccess, (state, { answer }) => ({
+    ...state,
+    answerLoading: false,
+    question: {
+      ...state.question!,
+      answers: [...state.question!.answers, answer],
+    },
   }))
 );

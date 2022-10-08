@@ -1,6 +1,6 @@
 <div class="main-grid">
   <div *ngIf="loading | async">loading...</div>
-  <div *ngIf="question">
+  <div *ngIf="question" class="w-full">
     <h1>{{ question.subject }}</h1>
     <div class="info">
       <span>{{ question.createdAt }}</span> | <span>0 views</span>
@@ -15,5 +15,6 @@
       *ngFor="let answer of question.answers"
       [answer]="answer"
     ></app-answer>
+    <app-create-answer [questionId]="question.id"></app-create-answer>
   </div>
 </div>

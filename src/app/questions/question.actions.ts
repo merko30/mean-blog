@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Question } from './types';
+import { Question, Answer } from './types';
 
 export const loadQuestions = createAction('[Question] Load questions');
 
@@ -32,4 +32,14 @@ export const loadQuestion = createAction(
 export const loadQuestionSuccess = createAction(
   '[Question] Load question success',
   props<{ question: Question }>()
+);
+
+export const createAnswer = createAction(
+  '[Question] Create answer',
+  props<{ answer: Answer }>()
+);
+
+export const createAnswerSuccess = createAction(
+  '[Question] Create answer success',
+  props<{ answer: Answer }>()
 );

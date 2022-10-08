@@ -1,7 +1,9 @@
 <button *ngIf="!(isLink && href)" [class]="variant" [type]="type">
-  <ng-content></ng-content>
+  <ng-content *ngTemplateOutlet="contentTpl"></ng-content>
 </button>
 
 <a *ngIf="isLink && href" [routerLink]="href" [class]="variant">
-  <ng-content></ng-content>
+  <ng-content *ngTemplateOutlet="contentTpl"></ng-content>
 </a>
+
+<ng-template #contentTpl><ng-content></ng-content></ng-template>

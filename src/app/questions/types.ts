@@ -23,6 +23,7 @@ export interface Answer {
   updatedAt: Date;
   votes: Vote[];
   voteCount: number;
+  questionId: number;
 }
 
 export interface Question {
