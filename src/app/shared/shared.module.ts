@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { FieldComponent } from './field/field.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ButtonComponent } from './button/button.component';
 import { AlertComponent } from './alert/alert.component';
+
 import { ErrorPipe } from '../pipes/error.pipe';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [ReactiveFormsModule, CommonModule, RouterModule],

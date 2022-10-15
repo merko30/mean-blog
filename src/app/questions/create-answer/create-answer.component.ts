@@ -29,7 +29,7 @@ export class CreateAnswerComponent implements OnInit {
 
   form: FormGroup;
 
-  editorConfig: AngularEditorConfig = { editable: true, height: '300px' };
+  editorConfig: AngularEditorConfig = { editable: true, height: '200px' };
 
   onSubmit(event: Event): void {
     event.preventDefault();
