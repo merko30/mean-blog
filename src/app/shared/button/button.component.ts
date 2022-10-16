@@ -2,6 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { ButtonVariant } from 'src/constants';
 
+const CLASSES = {
+  primary: 'bg text-reverse',
+  error: 'bg-error text-white',
+  info: '',
+};
+
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
@@ -13,7 +19,11 @@ export class ButtonComponent implements OnInit {
   ngOnInit(): void {}
 
   @Input() variant: ButtonVariant = ButtonVariant.primary;
-  @Input() class: string = '';
+
+  @Input() className: string = '';
+
+  class: string = `${CLASSES[this.variant]} ${this.className}`;
+
   @Input() type: 'submit' | 'button' = 'submit';
   @Input() isLink: Boolean = false;
   @Input() href?: string;

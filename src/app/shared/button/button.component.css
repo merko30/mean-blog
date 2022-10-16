@@ -2,16 +2,11 @@ a,
 button {
   display: flex;
   justify-content: center;
-  padding: 1rem 2rem;
+  padding: 0.875rem 1rem;
   border-radius: 0.5rem;
-  font-weight: 500;
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
   border: none;
   outline: none;
   cursor: pointer;
-}
-
-.primary {
-  background-color: rgb(33, 125, 246);
-  color: white;
 }

@@ -1,13 +1,13 @@
-<li>
+<li class="py-4">
   <a [routerLink]="['/questions', question.id]">
     <div class="info">
-      <p>{{ question.voteCount }} votes</p>
-      <p>{{ question.answerCount }} answers</p>
-      <p>42 views</p>
+      <p class="border-color text-nuance">{{ question.voteCount }} votes</p>
+      <p class="border-color text-nuance">{{ question.answerCount }} answers</p>
+      <p class="border-color text-nuance">42 views</p>
     </div>
     <div class="content">
       <h1>{{ question.content }}</h1>
-      <p class="author">
+      <p class="author text-nuance">
         by {{ question.author.username }}
         <span>{{ question.createdAt }}</span>
       </p>

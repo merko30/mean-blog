@@ -2,11 +2,6 @@ header {
   padding: 1rem;
 }
 
-#logo {
-  font-size: 2rem;
-  color: #333;
-}
-
 ul {
   display: flex;
 }
@@ -16,7 +11,5 @@ li {
 }
 
 li > a {
-  color: #444;
   text-transform: uppercase;
-  font-size: 0.875rem;
 }
